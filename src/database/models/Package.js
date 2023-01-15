@@ -3,18 +3,19 @@ module.exports = (sequelize, dataTypes) => {
 
     let cols = {
         id: {
-            type: dataTypes.BIGINT(10).UNSIGNED,
+            type: dataTypes.INTEGER ,
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
         },
 
         fly_id: {
-            type: dataTypes.BIGINT(10).UNSIGNED,
+            type: dataTypes.INTEGER ,
             allowNull: false,
         },
+        
         hotel_id: {
-            type: dataTypes.BIGINT(10).UNSIGNED,
+            type: dataTypes.INTEGER ,
             allowNull: false,
         },
 
@@ -46,7 +47,7 @@ module.exports = (sequelize, dataTypes) => {
         //conection with ticket db
         Package.belongsToMany(models.Ticket, {
             as: 'tickets',
-            through: 'package_tickests',
+            through: 'packages_tickets',
             foreignKey: 'package_id',
             otherKey: 'ticket_id',
         })

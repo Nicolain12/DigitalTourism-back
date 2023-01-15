@@ -3,7 +3,7 @@ module.exports = (sequelize, dataTypes) => {
 
     let cols = {
         id: {
-            type: dataTypes.BIGINT(10).UNSIGNED,
+            type: dataTypes.INTEGER ,
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
@@ -18,7 +18,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         Service: {
-            type: dataTypes.BIGINT(10).UNSIGNED,
+            type: dataTypes.INTEGER ,
             allowNull: false
         },
         description: {
@@ -52,10 +52,10 @@ module.exports = (sequelize, dataTypes) => {
     Hotel.associate = function (models) {
         // conection with ticket db
         Hotel.belongsToMany(models.Hotel, {
-            as: 'Hotels',
-            through: 'Hotels_tickets',
+            as: 'hotels',
+            through: 'hotels_tickets',
             foreignKey: 'ticket_id',
-            otherKey: 'Hotel_id',
+            otherKey: 'hotel_id',
         })
         //conection with package db
         Hotel.hasMany(models.Package, {

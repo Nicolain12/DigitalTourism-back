@@ -3,14 +3,14 @@ module.exports = (sequelize, dataTypes) => {
 
     let cols = {
         id: {
-            type: dataTypes.BIGINT(10).UNSIGNED,
+            type: dataTypes.INTEGER ,
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
         },
 
         user_id: {
-            type: dataTypes.BIGINT(10),
+            type: dataTypes.INTEGER ,
             allowNull: false
         },
 
@@ -27,6 +27,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.DATE
         }
     };
+
     let config = {
         timestamps: true,
         paranoid: true,
@@ -51,23 +52,23 @@ module.exports = (sequelize, dataTypes) => {
             as: 'flys',
             through: 'flys_tickets',
             foreignKey: 'ticket_id',
-            other: 'fly_id',
+            otherKey: 'fly_id',
         })
 
         // Conection with hotels db
         Ticket.belongsToMany(models.Hotel, {
-            as: 'Hotels',
-            through: 'Hotels_tickets',
+            as: 'hotels',
+            through: 'hotels_tickets',
             foreignKey: 'ticket_id',
-            other: 'Hotel_id',
+            otherKey: 'Hotel_id',
         })
 
         // Conection with packages db
         Ticket.belongsToMany(models.Package, {
-            as: 'Packages',
-            through: 'Packages_tickets',
+            as: 'packages',
+            through: 'packages_tickets',
             foreignKey: 'ticket_id',
-            other: 'Package_id',
+            otherKey: 'Package_id',
         })
 
     }

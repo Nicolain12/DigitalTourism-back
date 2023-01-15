@@ -1,3 +1,4 @@
+carrusel EJS 
    <div class="content-carrusel">
         <% for(let product of products) { %>
 
@@ -15,8 +16,39 @@
         <% } %> 
       </div> 
 
-      
+
+
+product article EJS
         <section class="section-article">
         <!-- En esta parte ahora estan las ofertas pero algun dia van a ir los ultimos paquetes visitados -->
             <%- include('./partials/productArticle') %>  
         </section>
+
+
+  carrusel logic controller
+
+          // let carruselArrowLeft = function (id){
+        // let carruselProduct = onSale.find(element => element.id == id)
+        // let carruselProductIndex = onSale.indexOf(carruselProduct)
+        //  if(carruselProduct){
+        //     if(carruselProductIndex > 0){
+        //         return onSale[carruselProductIndex - 1].id
+        //     }else{
+        //         let elseLeftProduct = onSale.length - 1
+        //         return onSale[elseLeftProduct].id
+        //     }
+        //     }
+        // }
+        // let carruselArrowRight = function (id){
+        //     let carruselProduct = onSale.find(element => element.id == id)
+        //     let carruselProductIndex = onSale.indexOf(carruselProduct)
+        //      if(carruselProduct){
+        //         let lastsProduct = onSale.length - 1
+        //         if(carruselProductIndex < lastsProduct){
+        //             return onSale[carruselProductIndex + 1].id
+        //         }
+        //         if(carruselProductIndex = lastsProduct){
+        //             return onSale[0].id
+        //         }
+        //         }
+        // }

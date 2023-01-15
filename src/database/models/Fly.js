@@ -3,7 +3,7 @@ module.exports = (sequelize, dataTypes) => {
 
     let cols = {
         id: {
-            type: dataTypes.BIGINT(10).UNSIGNED,
+            type: dataTypes.INTEGER ,
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
@@ -12,7 +12,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false
         },
-
+        
         departure: {
             type: dataTypes.STRING,
             allowNull: false
@@ -67,7 +67,9 @@ module.exports = (sequelize, dataTypes) => {
         }
 
     };
+    
     let config = {
+        tableName: 'flys',
         timestamps: true,
         paranoid: true,
         createdAt: 'created_at',
