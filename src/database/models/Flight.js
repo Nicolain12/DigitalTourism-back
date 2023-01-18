@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Fly';
+    let alias = 'Flight';
 
     let cols = {
         id: {
@@ -8,7 +8,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             autoIncrement: true
         },
-        airlines: {
+        airline: {
             type: dataTypes.STRING,
             allowNull: false
         },
@@ -69,7 +69,6 @@ module.exports = (sequelize, dataTypes) => {
     };
     
     let config = {
-        tableName: 'flys',
         timestamps: true,
         paranoid: true,
         createdAt: 'created_at',
@@ -78,23 +77,23 @@ module.exports = (sequelize, dataTypes) => {
 
     }
 
-    const Fly = sequelize.define(alias, cols, config);
+    const Flight = sequelize.define(alias, cols, config);
 
-    Fly.associate = function (models) {
+    Flight.associate = function (models) {
         //conection with ticket db
-        Fly.belongsToMany(models.Ticket, {
+        Flight.belongsToMany(models.Ticket, {
             as: 'tickets',
-            through: 'flys_tickets',
-            foreignKey: 'fly_id',
+            through: 'flights_tickets',
+            foreignKey: 'flight_id',
             otherKey: 'ticket_id',
         })
         //conection with package db
-        Fly.hasMany(models.Package, {
+        Flight.hasMany(models.Package, {
             as: "packages",
-            foreignKey: "fly_id"
+            foreignKey: "flight_id"
         })
 
     }
 
-    return Fly
+    return Flight
 };

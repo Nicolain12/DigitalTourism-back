@@ -9,16 +9,6 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true
         },
 
-        fly_id: {
-            type: dataTypes.INTEGER ,
-            allowNull: false,
-        },
-        
-        hotel_id: {
-            type: dataTypes.INTEGER ,
-            allowNull: false,
-        },
-
         price: {
             type: dataTypes.BIGINT,
             allowNull: false
@@ -52,18 +42,21 @@ module.exports = (sequelize, dataTypes) => {
             otherKey: 'ticket_id',
         })
 
-        //conection with fly db
-        Package.belongsTo(models.Fly, {
-            as: "flys",
-            foreignKey: "fly_id"
-        })
-        
         //conection with hotel db
         Package.belongsTo(models.Hotel, {
             as: "hotels",
             foreignKey: "hotel_id"
         })
+
+        //conection with fly db
+        
+        Package.belongsTo(models.Flight, {
+            as: "flights",
+            foreignKey: "flight_id"
+        })
     }
 
     return Package
 };
+
+// LocalChapters.belongsTo(NationalChapters, { foreignKey: 'NationalChapter_id', onDelete: 'CASCADE' });

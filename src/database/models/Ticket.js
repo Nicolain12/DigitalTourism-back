@@ -48,11 +48,11 @@ module.exports = (sequelize, dataTypes) => {
         })
         
         // Conection with flys db
-        Ticket.belongsToMany(models.Fly, {
-            as: 'flys',
-            through: 'flys_tickets',
+        Ticket.belongsToMany(models.Flight, {
+            as: 'flights',
+            through: 'flights_tickets',
             foreignKey: 'ticket_id',
-            otherKey: 'fly_id',
+            otherKey: 'flight_id',
         })
 
         // Conection with hotels db
