@@ -1,68 +1,40 @@
-module.exports = (sequelize, dataTypes) => {
-    let alias = 'Hotel';
-
-    let cols = {
-        id: {
-            type: dataTypes.INTEGER ,
-            primaryKey: true,
-            allowNull: false,
-            autoIncrement: true
-        },
-
-        name: {
-            type: dataTypes.STRING,
-            allowNull: false
-        },
-        spot: {
-            type: dataTypes.STRING(100),
-            allowNull: false
-        },
-        Service: {
-            type: dataTypes.INTEGER ,
-            allowNull: false
-        },
-        description: {
-            type: dataTypes.STRING,
-            allowNull: false
-        },
-        price: {
-            type: dataTypes.BIGINT,
-            allowNull: false
-        },
-
-        created_at: {
-            type: dataTypes.DATE
-        },
-
-        updated_at: {
-            type: dataTypes.DATE
-        }
-    };
-    let config = {
-        timestamps: true,
-        paranoid: true,
-        createdAt: 'created_at',
-        updatedAt: 'updated_at',
-        deletedAt: 'deleted_at',
-
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Hotel extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // conection with ticket db
+      Hotel.belongsToMany(models.Hotel, {
+        as: 'hotels',
+        through: 'hotels_tickets',
+        foreignKey: 'ticket_id',
+        otherKey: 'hotel_id',
+      })
+      //conection with package db
+      Hotel.hasMany(models.Package, {
+        as: "packages",
+        foreignKey: "hotel_id"
+      })
     }
-
-    const Hotel = sequelize.define(alias, cols, config);
-
-    Hotel.associate = function (models) {
-        // conection with ticket db
-        Hotel.belongsToMany(models.Hotel, {
-            as: 'hotels',
-            through: 'hotels_tickets',
-            foreignKey: 'ticket_id',
-            otherKey: 'hotel_id',
-        })
-        //conection with package db
-        Hotel.hasMany(models.Package, {
-            as: "packages",
-            foreignKey: "hotel_id"
-        })
-    }
-
-    return Hotel
+  }
+  Hotel.init({
+    image: DataTypes.STRING,
+    name: DataTypes.STRING,
+    spot: DataTypes.STRING,
+    service: DataTypes.INTEGER,
+    description: DataTypes.STRING,
+    price: DataTypes.BIGINT
+  }, {
+    sequelize,
+    modelName: 'Hotel',
+    tablelName: 'hotels',
+  });
+  return Hotel;
 };

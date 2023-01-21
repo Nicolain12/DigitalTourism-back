@@ -1,78 +1,50 @@
-module.exports = (sequelize, dataTypes) => {
-    let alias = 'Ticket';
+'use strict';
+const {Model} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Ticket extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+       // Conection with users db
+       Ticket.belongsTo(models.User, {
+        as: "users",
+        foreignKey: "user_id"
+    })
+      // Conection with flys db
+      Ticket.belongsToMany(models.Flight, {
+        as: 'flights',
+        through: 'flights_tickets',
+        foreignKey: 'ticket_id',
+        otherKey: 'flight_id',
+    })
 
-    let cols = {
-        id: {
-            type: dataTypes.INTEGER ,
-            primaryKey: true,
-            allowNull: false,
-            autoIncrement: true
-        },
+    // Conection with hotels db
+    Ticket.belongsToMany(models.Hotel, {
+        as: 'hotels',
+        through: 'hotels_tickets',
+        foreignKey: 'ticket_id',
+        otherKey: 'Hotel_id',
+    })
 
-        user_id: {
-            type: dataTypes.INTEGER ,
-            allowNull: false
-        },
-
-        price: {
-            type: dataTypes.BIGINT,
-            allowNull: false
-        },
-
-        created_at: {
-            type: dataTypes.DATE
-        },
-
-        updated_at: {
-            type: dataTypes.DATE
-        }
-    };
-
-    let config = {
-        timestamps: true,
-        paranoid: true,
-        createdAt: 'created_at',
-        updatedAt: 'updated_at',
-        deletedAt: 'deleted_at',
-
+    // Conection with packages db
+    Ticket.belongsToMany(models.Package, {
+        as: 'packages',
+        through: 'packages_tickets',
+        foreignKey: 'ticket_id',
+        otherKey: 'Package_id',
+    })
     }
-
-    const Ticket = sequelize.define(alias, cols, config);
-
-    
-    Ticket.associate = function (models) {
-        // Conection with users db
-        Ticket.belongsTo(models.User, {
-            as: "users",
-            foreignKey: "user_id"
-        })
-        
-        // Conection with flys db
-        Ticket.belongsToMany(models.Flight, {
-            as: 'flights',
-            through: 'flights_tickets',
-            foreignKey: 'ticket_id',
-            otherKey: 'flight_id',
-        })
-
-        // Conection with hotels db
-        Ticket.belongsToMany(models.Hotel, {
-            as: 'hotels',
-            through: 'hotels_tickets',
-            foreignKey: 'ticket_id',
-            otherKey: 'Hotel_id',
-        })
-
-        // Conection with packages db
-        Ticket.belongsToMany(models.Package, {
-            as: 'packages',
-            through: 'packages_tickets',
-            foreignKey: 'ticket_id',
-            otherKey: 'Package_id',
-        })
-
-    }
-
-    return Ticket
+  }
+  Ticket.init({
+    user_id: DataTypes.INTEGER,
+    price: DataTypes.BIGINT
+  }, {
+    sequelize,
+    tableName: 'tickets',
+    modelName: 'Ticket',
+  });
+  return Ticket;
 };
-
