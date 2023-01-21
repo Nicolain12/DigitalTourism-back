@@ -13,29 +13,28 @@ module.exports = (sequelize, DataTypes) => {
         as: "users",
         foreignKey: "user_id"
     })
+
+
       // Conection with flys db
-      Ticket.belongsToMany(models.Flight, {
+      Ticket.hasMany(models.Flights_tickets, {
         as: 'flights',
-        through: 'flights_tickets',
-        foreignKey: 'ticket_id',
-        otherKey: 'flight_id',
+        foreignKey: 'flight_id',
     })
 
     // Conection with hotels db
-    Ticket.belongsToMany(models.Hotel, {
+    Ticket.hasMany(models.Hotels_tickets, {
         as: 'hotels',
-        through: 'hotels_tickets',
-        foreignKey: 'ticket_id',
-        otherKey: 'Hotel_id',
+        foreignKey: 'hotel_id',
     })
 
     // Conection with packages db
-    Ticket.belongsToMany(models.Package, {
+    Ticket.hasMany(models.Packages_tickets, {
         as: 'packages',
-        through: 'packages_tickets',
-        foreignKey: 'ticket_id',
-        otherKey: 'Package_id',
+        foreignKey: 'package_id',
     })
+
+
+
     }
   }
   Ticket.init({

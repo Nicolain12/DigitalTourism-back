@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // Conection with tickets db
-      Packages_tickets.hasMany(models.Ticket, {
+      Packages_tickets.belongsTo(models.Ticket, {
         as: "tickets",
         foreignKey: "ticket_id"
       })
       // Conection with packages db
-      Packages_tickets.hasMany(models.Package, {
+      Packages_tickets.belongsTo(models.Package, {
         as: "packages",
         foreignKey: "package_id"
       })
