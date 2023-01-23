@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      //conection with ticket db
+      // ****** conection with ticket db ******
       // Flight.belongsToMany(models.Ticket, {
       //   as: 'tickets',
       //   through: 'flights_tickets',
@@ -18,11 +18,12 @@ module.exports = (sequelize, DataTypes) => {
       //   otherKey: 'ticket_id',
       // })
 
-      Flight.hasMany(models.Flights_tickets, {
+      Flight.hasMany(models.Flights_tickets,{
         as: 'tickets',
-        foreignKey: 'flight_id',
+        foreignKey: 'flight_id'
       })
-      //conection with package db
+
+      // ****** conection with package db ******
       Flight.hasMany(models.Package, {
         as: "packages",
         foreignKey: "flight_id"

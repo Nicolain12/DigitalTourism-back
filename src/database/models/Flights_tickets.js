@@ -10,12 +10,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // Conection with tickets db
+      // ****** Conection with tickets db ******
       Flights_tickets.belongsTo(models.Ticket, {
         as: "tickets",
         foreignKey: "ticket_id"
       })
-      // Conection with flights db
+
+      // ****** Conection with flights db ******
       Flights_tickets.belongsTo(models.Flight, {
         as: "flights",
         foreignKey: "flight_id"

@@ -1,5 +1,5 @@
 'use strict';
-const {Model} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Ticket extends Model {
     /**
@@ -8,33 +8,40 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-       // Conection with users db
-       Ticket.belongsTo(models.User, {
+      // ****** Conection with users db ******
+      Ticket.belongsTo(models.User, {
         as: "users",
         foreignKey: "user_id"
-    })
+      })
 
+      // ****** Conection with flys db ******
+      // Ticket.belongsToMany(models.Flight, {
+      //   as: 'flights',
+      //   through: 'flights_tickets',
+      //   foreignKey: 'ticket_id',
+      //   otherKey: 'flight_id',
+      // })
 
-      // Conection with flys db
-      Ticket.hasMany(models.Flights_tickets, {
+      Ticket.hasMany(models.Flights_tickets,{
         as: 'flights',
-        foreignKey: 'flight_id',
-    })
+        foreignKey: 'ticket_id'
+      })
 
-    // Conection with hotels db
-    Ticket.hasMany(models.Hotels_tickets, {
+      // ****** Conection with hotels db ******
+      Ticket.belongsToMany(models.Hotel, {
         as: 'hotels',
-        foreignKey: 'hotel_id',
-    })
+        through: 'hotels_tickets',
+        foreignKey: 'ticket_id',
+        otherKey: 'Hotel_id',
+      })
 
-    // Conection with packages db
-    Ticket.hasMany(models.Packages_tickets, {
+      // ****** Conection with packages db ******
+      Ticket.belongsToMany(models.Package, {
         as: 'packages',
-        foreignKey: 'package_id',
-    })
-
-
-
+        through: 'packages_tickets',
+        foreignKey: 'ticket_id',
+        otherKey: 'Package_id',
+      })
     }
   }
   Ticket.init({

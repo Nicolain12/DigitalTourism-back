@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "ticket_id"
       })
       // Conection with hotel db
-      Hotels_tickets.belongsTo(models.Hotel, {
+      Hotels_tickets.belongsTo  (models.Hotel, {
         as: "hotels",
         foreignKey: "hotel_id"
       })

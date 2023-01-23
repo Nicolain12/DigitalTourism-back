@@ -11,17 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // conection with ticket db
-      // Hotel.belongsToMany(models.Hotel, {
-      //   as: 'hotels',
-      //   through: 'hotels_tickets',
-      //   foreignKey: 'ticket_id',
-      //   otherKey: 'hotel_id',
-      // })
+      Hotel.belongsToMany(models.Ticket, {
+        as: 'hotels',
+        through: 'hotels_tickets',
+        foreignKey: 'ticket_id',
+        otherKey: 'hotel_id',
+    })
 
-      Hotel.hasMany(models.Hotels_tickets, {
-        as: 'tickets',
-        foreignKey: 'hotel_id',
-      })
       //conection with package db
       Hotel.hasMany(models.Package, {
         as: "packages",
