@@ -5,7 +5,17 @@ const app = express()
 //routes requires
 const indexRoutes = require('./routes/index.js')
 const usersRoutes = require('./routes/users.js')
+const usersApi = require('./routes/usersApi.js')
 const productsRoutes = require('./routes/products.js')
+const productsApi = require('./routes/productsApi.js')
+
+//uses
+app.use('/', indexRoutes)
+app.use('/users', usersRoutes)
+app.use('/api/users', usersApi)
+app.use('/products', productsRoutes)
+app.use('/api/products', productsApi)
+
 
 // methodOverride
 const methodOverride = require('method-override')
@@ -41,8 +51,4 @@ app.listen(PORT, () => {
     console.log('http://localhost:3000/')
 })
 
-//uses
-app.use('/', indexRoutes)
-app.use('/users', usersRoutes)
-app.use('/products', productsRoutes)
 
