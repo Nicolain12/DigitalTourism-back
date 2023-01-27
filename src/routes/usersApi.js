@@ -26,5 +26,7 @@ router.get('/:id', usersAPI.detail)
 // Register user
 router.post('/register', usersAPI.register)
 
+// Loggin user
+router.post('/loggin', usersAPI.loggin)
 
 module.exports = router

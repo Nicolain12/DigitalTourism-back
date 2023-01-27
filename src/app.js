@@ -9,18 +9,12 @@ const usersApi = require('./routes/usersApi.js')
 const productsRoutes = require('./routes/products.js')
 const productsApi = require('./routes/productsApi.js')
 
-//uses
-app.use('/', indexRoutes)
-app.use('/users', usersRoutes)
-app.use('/api/users', usersApi)
-app.use('/products', productsRoutes)
-app.use('/api/products', productsApi)
+app.use(express.json())
 
 
 // methodOverride
 const methodOverride = require('method-override')
 app.use(methodOverride ("_method"))
-
 //public
 const publicPath = path.join(__dirname, '../public')
 app.use(express.static(publicPath))
@@ -51,4 +45,10 @@ app.listen(PORT, () => {
     console.log('http://localhost:3000/')
 })
 
+//uses
+app.use('/', indexRoutes)
+app.use('/users', usersRoutes)
+app.use('/api/users', usersApi)
+app.use('/products', productsRoutes)
+app.use('/api/products', productsApi)
 
