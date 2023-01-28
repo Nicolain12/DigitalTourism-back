@@ -32,4 +32,7 @@ router.post('/loggin', usersAPI.loggin)
 // Update user
 router.put('/update/:id', usersAPI.update)
 
+// Delete user
+router.delete('/delete/:id', usersAPI.delete)
+
 module.exports = router

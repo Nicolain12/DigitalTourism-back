@@ -110,8 +110,6 @@ module.exports = {
             })
 
             const finded = userInDb[0].dataValues
-            console.log('finded:');
-            console.log(finded);
 
             if (userInDb.length > 0) {
                 let passwordCheck = bcrypt.compareSync(user.password, finded.password)
@@ -158,6 +156,33 @@ module.exports = {
             response.info.msg = e.message
             res.json(response)
         }
+
     },
+    
+    delete: async (req, res) => {
+        let response = {
+            info: {
+                status: 200
+            }
+        }
+        try {
+            const destroy = await Users.destroy({
+                where: {
+                  id: req.params.id
+                }
+              })
+              response.data = destroy
+              res.json(response)
+  
+
+        } catch (e) {
+            response.info.status = 400
+            response.info.msg = e.message
+            res.json(response)
+        }
+        
+    },
+
+    
 }
 
