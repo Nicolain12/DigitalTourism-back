@@ -77,7 +77,6 @@ module.exports = {
                     image: user.image ? user.image : 'default.jpg',
                     admin: user.admin
                 })
-                console.log(registedUser);
                 response.data = registedUser
                 res.json(response)
             }
@@ -96,15 +95,62 @@ module.exports = {
             }
         }
         try {
+            let user = {
+                email: req.body.email,
+                password: req.body.password
+            }
+            console.log('user:');
+            console.log(user);
+
+
+            const userInDb = await Users.findAll({
+                where: {
+                    email: user.email
+                }
+            })
+
+            const finded = userInDb[0].dataValues
+            console.log('finded:');
+            console.log(finded);
+
+            if (userInDb.length > 0) {
+                let passwordCheck = bcrypt.compareSync(user.password, finded.password)
+                if (passwordCheck) {
+                    delete finded.password
+                    req.session.userLogged = finded
+                    response.data = finded
+                    return res.json(response)
+                } else {
+                    return new Error('Ivalid password')
+                }
+            } else {
+                return new Error('Invalid data')
+            }
+
+
+        } catch (e) {
+            response.info.status = 400
+            response.info.msg = e.message
+            res.json(response)
+        }
+    },
+
+    update: async (req, res) => {
+        let response = {
+            info: {
+                status: 200
+            }
+        }
+        try {
             let newData = {
                 firstName: req.body.firstName,
-                lastName: req.body.secondName,
+                lastName: req.body.lastName,
                 email: req.body.email,
                 image: req.file ? req.file.filename : 'default.jpg',
                 admin: req.body.admin
             }
-
-            response.data = registedUser
+            const edited = await Users.update(newData, {where:{id: req.params.id}})
+            response.data = newData
             res.json(response)
 
         } catch (e) {
@@ -112,6 +158,6 @@ module.exports = {
             response.info.msg = e.message
             res.json(response)
         }
-    }
+    },
 }
 

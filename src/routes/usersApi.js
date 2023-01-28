@@ -29,4 +29,7 @@ router.post('/register', usersAPI.register)
 // Loggin user
 router.post('/loggin', usersAPI.loggin)
 
+// Update user
+router.put('/update/:id', usersAPI.update)
+
 module.exports = router
