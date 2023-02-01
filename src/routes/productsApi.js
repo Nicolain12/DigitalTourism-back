@@ -26,7 +26,16 @@ router.get('/flights', productsAPI.listFlights)
 // List of hotels
 router.get('/hotels', productsAPI.listHotels)
 
+// Create flights
+router.post('/create/flight', productsAPI.createFlights)
 
+// Create hotels
+router.post('/create/hotel', productsAPI.createHotels)
 
+// Create packages
+router.post('/create/packages', productsAPI.createPackages)
+
+//Update flights
+router.put('/update/flight/:id', productsAPI.updateFlights)
 
 module.exports = router

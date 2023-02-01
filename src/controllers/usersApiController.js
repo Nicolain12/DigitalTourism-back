@@ -51,7 +51,7 @@ module.exports = {
             }
         }
         try {
-            let user = {
+            const user = {
                 firstName: req.body.firstName,
                 lastName: req.body.secondName,
                 email: req.body.email,
@@ -69,14 +69,7 @@ module.exports = {
             if (isInDb.length > 0) {
                 return new Error('The user is already on the database')
             } else {
-                const registedUser = await Users.create({
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    email: user.email,
-                    password: user.password,
-                    image: user.image ? user.image : 'default.jpg',
-                    admin: user.admin
-                })
+                const registedUser = await Users.create(user)
                 response.data = registedUser
                 res.json(response)
             }

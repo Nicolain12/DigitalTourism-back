@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         through: 'hotels_tickets',
         foreignKey: 'ticket_id',
         otherKey: 'hotel_id',
-    })
+      })
 
       //conection with package db
       Hotel.hasMany(models.Package, {
