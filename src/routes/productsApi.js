@@ -17,14 +17,6 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage })
 
-// List of packages
-router.get('/packages', productsAPI.listPackages)
-
-// List of flights
-router.get('/flights', productsAPI.listFlights)
-
-// List of hotels
-router.get('/hotels', productsAPI.listHotels)
 
 // Create flights
 router.post('/create/flight', productsAPI.createFlights)
@@ -35,7 +27,30 @@ router.post('/create/hotel', productsAPI.createHotels)
 // Create packages
 router.post('/create/packages', productsAPI.createPackages)
 
+// List of packages
+router.get('/packages', productsAPI.listPackages)
+
+// List of flights
+router.get('/flights', productsAPI.listFlights)
+
+// List of hotels
+router.get('/hotels', productsAPI.listHotels)
+
+// Find flight by pk
+router.get('/flight/:id', productsAPI.flightByPk)
+// Find hotel by pk
+router.get('/hotel/:id', productsAPI.hotelByPk)
+// Find package by pk
+router.get('/package/:id', productsAPI.packageByPk)
+
 //Update flights
 router.put('/update/flight/:id', productsAPI.updateFlights)
+
+//Update flights
+router.put('/update/hotel/:id', productsAPI.updateHotels)
+
+//Update packages
+router.put('/update/package/:id', productsAPI.updatePackages)  
+
 
 module.exports = router
