@@ -25,7 +25,7 @@ router.post('/create/flight', productsAPI.createFlights)
 router.post('/create/hotel', productsAPI.createHotels)
 
 // Create packages
-router.post('/create/packages', productsAPI.createPackages)
+router.post('/create/package', productsAPI.createPackages)
 
 // List of packages
 router.get('/packages', productsAPI.listPackages)
@@ -37,20 +37,31 @@ router.get('/flights', productsAPI.listFlights)
 router.get('/hotels', productsAPI.listHotels)
 
 // Find flight by pk
+
 router.get('/flight/:id', productsAPI.flightByPk)
+
 // Find hotel by pk
 router.get('/hotel/:id', productsAPI.hotelByPk)
+
 // Find package by pk
 router.get('/package/:id', productsAPI.packageByPk)
 
-//Update flights
+// Update flights
 router.put('/update/flight/:id', productsAPI.updateFlights)
 
-//Update flights
+// Update flights
 router.put('/update/hotel/:id', productsAPI.updateHotels)
 
-//Update packages
+// Update packages
 router.put('/update/package/:id', productsAPI.updatePackages)  
 
+// Delete flights
+router.delete('/delete/flight/:id', productsAPI.deleteFlight)
+
+// Delete hotels
+router.delete('/delete/hotel/:id', productsAPI.deleteHotel)
+
+// Delete package
+router.delete('/delete/package/:id', productsAPI.deletePackage)
 
 module.exports = router

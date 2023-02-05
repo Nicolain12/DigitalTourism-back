@@ -12,7 +12,6 @@ const Hotel = db.Hotel
 
 
 module.exports = {
-
     //CREATE
     createFlights: async (req, res) => {
         let response = {
@@ -108,20 +107,20 @@ module.exports = {
             }
             const addingFlight = await Flight.create(newFlight)
             const addingHotel = await Hotel.create(newHotel)
-            const flightP = addingFlight.dataValues
-            const hotelP = addingHotel.dataValues
-            const priceHotel = hotelP.price * (Math.floor(((new Date(flightP.reach_date) - new Date(flightP.departure_date)) / (1000 * 60 * 60 * 24))))
-            const discountCalculator = (flightP.price + priceHotel) - (((flightP.price + priceHotel) * req.body.discount) / 100)
+            const priceHotel = addingHotel.dataValues.price * (Math.floor(((new Date(addingFlight.dataValues.reach_date) - new Date(addingFlight.dataValues.departure_date)) / (1000 * 60 * 60 * 24))))
+            const discountCalculator = (addingFlight.dataValues.price + priceHotel) - (((addingFlight.dataValues.price + priceHotel) * req.body.discount) / 100)
             const newPackage = {
-                flight_id: flightP.id,
-                hotel_id: hotelP.id,
+                flight_id: addingFlight.dataValues.id,
+                hotel_id: addingHotel.dataValues.id,
                 price: discountCalculator,
                 discount: req.body.discount
             }
             const addingPackages = await Package.create(newPackage)
-            response.data.package = addingPackages
-            response.data.flight = flightP
-            response.data.hotel = hotelP
+            response.data = {
+                package: addingPackages,
+                flight: addingFlight,
+                hotel: addingHotel
+            }
             res.json(response)
         }
         catch (e) {
@@ -262,7 +261,7 @@ module.exports = {
                 }
                 res.json(response)
 
-            }else {new Error('Package not found')}
+            } else { new Error('Package not found') }
         } catch (e) {
             response.info.status = 400
             response.info.msg = e.message
@@ -278,8 +277,9 @@ module.exports = {
             }
         }
         try {
-            const isPackage = await Package.findAll({where: { flight_id: req.params.id }})
-            if (!isPackage) { 
+            const isPackage = await Package.findAll()
+            const isIn = isPackage.find(element => element.dataValues.flight_id == req.params.id)
+            if (!isIn) {
                 const newFlight = {
                     image: req.file ? req.file.filename : 'logo2.jpg',
                     airline: req.body.airline,
@@ -298,7 +298,8 @@ module.exports = {
                 response.data = newFlight
                 res.json(response)
             } else {
-                new Error(`In order to update this flight you must do it in the package ---> http://localhost:3000/api/products/package/${isPackage.id}`)
+                response.info.msg = `In order to update this flight you must do it in the package ---> http://localhost:3000/api/products/update/package/${isIn.dataValues.id}`
+                res.json(response)
             }
         }
         catch (e) {
@@ -315,22 +316,24 @@ module.exports = {
             }
         }
         try {
-            const isPackage = await Package.findAll({where: { hotel_id: req.params.id }})
-            if (!isPackage) { 
-            const newHotelInfo = {
-                image: req.file ? req.file.filename : 'logo2.jpg',
-                name: req.body.name,
-                spot: req.body.spot,
-                service: req.body.service,
-                description: req.body.description,
-                price: req.body.price
+            const isPackage = await Package.findAll()
+            const isIn = isPackage.find(element => element.dataValues.hotel_id == req.params.id)
+            if (!isIn) {
+                const newHotelInfo = {
+                    image: req.file ? req.file.filename : 'logo2.jpg',
+                    name: req.body.name,
+                    spot: req.body.spot,
+                    service: req.body.service,
+                    description: req.body.description,
+                    price: req.body.price
+                }
+                const edited = await Hotel.update(newHotelInfo, { where: { id: req.params.id } })
+                response.data = newHotelInfo
+                res.json(response)
+            } else {
+                response.info.msg = `In order to update this hotel you must do it in the package ---> http://localhost:3000/api/products/update/package/${isIn.dataValues.id}`
+                res.json(response)
             }
-            const edited = await Hotel.update(newHotelInfo, { where: { id: req.params.id } })
-            response.data = newHotelInfo
-            res.json(response)
-        }else {
-            new Error(`In order to update this hotel you must do it in the package ---> http://localhost:3000/api/products/package/${isPackage.id}`)
-        }
         }
         catch (e) {
             response.info.status = 400
@@ -374,31 +377,26 @@ module.exports = {
             if (pack) {
                 const updatePackageFlight = await Flight.update(newFlight, { where: { id: pack.flight_id } })
                 const updatePackageHotel = await Hotel.update(newHotel, { where: { id: pack.hotel_id } })
-                const flightP = updatePackageFlight.dataValues
-                const hotelP = updatePackageHotel.dataValues
-                const priceHotel = hotelP.price * (Math.floor(((new Date(flightP.reach_date) - new Date(flightP.departure_date)) / (1000 * 60 * 60 * 24))))
-                const discountCalculator = (flightP.price + priceHotel) - (((flightP.price + priceHotel) * req.body.discount) / 100)
-                const updatePrice = pack.price != discountCalculator
-                if (updatePrice) {
-                    const newPack = {
-                        flight_id: flightP.id,
-                        hotel_id: hotelP.id,
-                        price: discountCalculator,
-                        discount: req.body.discount
-                    }
-                    const updatePack = await Package.update(newPack, { where: { id: req.params.id } })
-                    response.data.package = updatePack
-                    response.data.flight = flightP
-                    response.data.hotel = hotelP
-                    res.json(response)
-                } else {
-                    response.data.package = pack
-                    response.data.flight = flightP
-                    response.data.hotel = hotelP
-                    res.json(response)
+                const priceHotel = newHotel.price * (Math.floor(((new Date(newFlight.reach_date) - new Date(newFlight.departure_date)) / (1000 * 60 * 60 * 24))))
+                const discountCalculator = (newFlight.price + priceHotel) - (((newFlight.price + priceHotel) * req.body.discount) / 100)
+                const newPack = {
+                    flight_id: newFlight.id,
+                    hotel_id: newHotel.id,
+                    price: discountCalculator,
+                    discount: req.body.discount
                 }
-            } else {
+                const updatePack = await Package.update(newPack, { where: { id: req.params.id } })
+                response.data = {
+                    package: newPack,
+                    flight: newFlight,
+                    hotel: newHotel
+                }
+                res.json(response)
+
+            }
+            else {
                 new Error('Package not found')
+
             }
         }
         catch (e) {
@@ -410,75 +408,101 @@ module.exports = {
     },
 
     //DELETE
+    deleteFlight: async (req, res) => {
+        let response = {
+            info: {
+                status: 200
+            }
+        }
+        try {
+            const packages = await Package.findAll()
+            const isIn = packages.find(element => element.dataValues.flight_id == req.params.id)
+            if (!isIn) {
+                const flight = await Flight.findByPk(req.params.id)
+                const resData = flight.dataValues
+                if (resData) {
+                    const destroy = await Flight.destroy({
+                        where: {
+                            id: req.params.id
+                        }
+                    })
+                    response.data = resData
+                    res.json(response)
+                } else {
+                    new Error('Flight not found')
+                }
+            } else {
+                new Error("You can delete a package's flight")
+            }
+        } catch (e) {
+            response.info.status = 400
+            response.info.msg = e.message
+            res.json(response)
+        }
+    },
 
-    // deleteFlight: async (req, res) => {
-    //     let response = {
-    //         info: {
-    //             status: 200
-    //         }
-    //     }
-    //     try {
-    //         const destroy = await /*MODEL*/.destroy({
-    //             where: {
-    //               id: req.params.id
-    //             }
-    //           })
-    //           response.data = destroy
-    //           res.json(response)
+    deleteHotel: async (req, res) => {
+        let response = {
+            info: {
+                status: 200
+            }
+        }
+        try {
+            const packages = await Package.findAll()
+            const isIn = packages.find(element => element.dataValues.hotel_id == req.params.id)
+            if (!isIn) {
+                const hotel = await Hotel.findByPk(req.params.id)
+                const resData = hotel.dataValues
+                if (resData) {
+                    const destroy = await Hotel.destroy({
+                        where: {
+                            id: req.params.id
+                        }
+                    })
+                    response.data = resData
+                    res.json(response)
+                } else {
+                    new Error('Hotel not found')
+                }
+            } else {
+                new Error("You can delete a package's hotel")
+            }
+        } catch (e) {
+            response.info.status = 400
+            response.info.msg = e.message
+            res.json(response)
+        }
+    },
 
+    deletePackage: async (req, res) => {
+        let response = {
+            info: {
+                status: 200
+            }
+        }
+        try {
+            const pack = await Package.findByPk(req.params.id)
+            if (pack) {
+                const flight = await Flight.findByPk(pack.dataValues.flight_id)
+                const hotel = await Hotel.findByPk(pack.dataValues.hotel_id)
+                if (flight && hotel) {
+                    const deleteFlight = await Flight.destroy({where:{id: pack.dataValues.flight_id}})
+                    const deleteHotel = await Hotel.destroy({where:{id: pack.dataValues.hotel_id}})
+                    response.data = {
+                        package: pack,
+                        flight: flight,
+                        hotel: hotel  
+                    }
+                    res.json(response)
+                }
+            }
 
-    //     } catch (e) {
-    //         response.info.status = 400
-    //         response.info.msg = e.message
-    //         res.json(response)
-    //     }
-    // },
-
-    // deleteHotel: async (req, res) => {
-    //     let response = {
-    //         info: {
-    //             status: 200
-    //         }
-    //     }
-    //     try {
-    //         const destroy = await /*MODEL*/.destroy({
-    //             where: {
-    //               id: req.params.id
-    //             }
-    //           })
-    //           response.data = destroy
-    //           res.json(response)
-
-
-    //     } catch (e) {
-    //         response.info.status = 400
-    //         response.info.msg = e.message
-    //         res.json(response)
-    //     }    
-    // },
-
-    // deletePackage: async (req, res) => {
-    //     let response = {
-    //         info: {
-    //             status: 200
-    //         }
-    //     }
-    //     try {
-    //         const destroy = await /*MODEL*/.destroy({
-    //             where: {
-    //               id: req.params.id
-    //             }
-    //           })
-    //           response.data = destroy
-    //           res.json(response)
-
-
-    //     } catch (e) {
-    //         response.info.status = 400
-    //         response.info.msg = e.message
-    //         res.json(response)
-    //     }    
-    // },
+        } catch (e) {
+            response.info.status = 400
+            response.info.msg = e.message
+            res.json(response)
+        }
+    },
 
 }
 
