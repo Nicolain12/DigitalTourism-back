@@ -1,33 +1,10 @@
-const path = require('path')
-const fs = require('fs')
-const bcrypt = require('bcryptjs');
-
-
 //validations
 const { validationResult } = require('express-validator');
 const { use } = require('../routes/users');
 
+module.exports = {
+    update: (req, res) => { res.render('./users/editUser.ejs') },
 
-const usersController = {
-    //List of users
-
-
-    //Loggin
-
-
-    //REGISTER
-
-
-    //profile
-
-    //edit user
-
-
-    //loggOut
-
-
-    //delete usere
-
+    delete: (req, res) => { res.render('./users/deleteConfirmUser.ejs') },
 }
 
-module.exports = usersController

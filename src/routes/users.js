@@ -6,32 +6,32 @@ const path = require('path');
 
 
 //VALIDATIONS
-const {body} = require('express-validator')
+const { body } = require('express-validator')
 const validationsRegister = [
     body('name')
         .notEmpty().withMessage('Debes introducir un nombre').bail()
-        .isLength({min: 2, max: 50}).withMessage('Debes introducir un nombre valido'),
+        .isLength({ min: 2, max: 50 }).withMessage('Debes introducir un nombre valido'),
 
     body('surname')
         .notEmpty().withMessage('Debes introducir un apellido').bail()
-        .isLength({min: 2, max: 50}).withMessage('Debes introducir un apellido valido'),
+        .isLength({ min: 2, max: 50 }).withMessage('Debes introducir un apellido valido'),
 
     body('email')
         .notEmpty().withMessage('Tienes que introducir un Email').bail()
         .isEmail().withMessage('Tienes que introducir un Email valido').bail()
-        .isLength({min: 5, max: 100}).withMessage('Tienes que introducir un Email valido'),
+        .isLength({ min: 5, max: 100 }).withMessage('Tienes que introducir un Email valido'),
 
     body('password')
         .notEmpty().withMessage('Debes introducir una contraseña'),
-    body('userImg').custom((value, {req}) =>{
+    body('userImg').custom((value, { req }) => {
         let file = req.file
         let allowedExtensions = ['.jpg', '.png', '.gif']
 
-        if(!file){
+        if (!file) {
             throw new Error('Tienes que subir una imagen')
-        }else{
+        } else {
             let fileExtension = path.extname(file.originalname)
-            if(!allowedExtensions.includes(fileExtension)){
+            if (!allowedExtensions.includes(fileExtension)) {
                 throw new Error(`Las imagenes permitidas son de los tipos ${allowedExtensions.join(', ')}`)
             }
         }
@@ -41,7 +41,7 @@ const validationsLoggin = [
     body('email')
         .notEmpty().withMessage('Tienes que introducir un Email').bail()
         .isEmail().withMessage('Tienes que introducir un Email valido'),
-        body('password')
+    body('password')
         .notEmpty().withMessage('Debes introducir una contraseña'),
 ]
 
@@ -53,7 +53,7 @@ const storage = multer.diskStorage({
         cb(null, folder)
     },
     filename: function (req, file, cb) {
-        let imageName ='user-' +  Date.now() + path.extname(file.originalname)
+        let imageName = 'user-' + Date.now() + path.extname(file.originalname)
         cb(null, imageName)
     }
 })
@@ -61,33 +61,9 @@ const upload = multer({ storage: storage })
 
 
 
-// // list user
-// router.get('/', usersController.users)
+router.get('/update', usersController.update)
 
-// //choose
-// router.get('/choose', usersController.choose)
-
-// //profile
-// router.get('/profile/:id', usersController.profile)
-
-// //edit user
-// router.get('/editUser/:id', usersController.editUser)
-// router.put('/userUpdate/:id', upload.single('fileEdit'), usersController.userUpdate)
-
-// //login
-// router.get('/loggin', usersController.login)
-// router.post('/loggin', validationsLoggin, usersController.loggSubmit)
-
-// //loggOut
-// router.post('/loggOut', usersController.loggOut)
-
-// //register
-// router.get('/register', usersController.register)
-// router.post('/registerUser', upload.single('userImg'), validationsRegister, usersController.registerUser)
-
-// // delete user
-// router.get('/deleteConfirm/:id', usersController.deleteConfirm)
-// router.delete('/distroy/:id', usersController.distroy)
+router.get('/delete', usersController.delete)
 
 
 module.exports = router

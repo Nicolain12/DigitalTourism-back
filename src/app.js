@@ -14,12 +14,12 @@ app.use(express.json())
 
 // methodOverride
 const methodOverride = require('method-override')
-app.use(methodOverride ("_method"))
+app.use(methodOverride("_method"))
 //public
 const publicPath = path.join(__dirname, '../public')
 app.use(express.static(publicPath))
 
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }))
 
 //Cookie
 const cookieParser = require('cookie-parser')
@@ -31,7 +31,7 @@ app.set('views', path.join(__dirname, '../views')) // Path "views"
 
 //session
 const session = require('express-session')
-app.use(session({secret: 'Secret'}))
+app.use(session({ secret: 'Secret' }))
 
 
 // const isInSession = require('./middlewares/isInSession')

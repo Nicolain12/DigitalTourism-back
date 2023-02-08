@@ -3,22 +3,18 @@ const router = express.Router()
 const productsController = require('../controllers/productsController')
 const path = require('path');
 
+router.get('/createFlight', productsController.createFlight)
 
-// // List of products
+router.get('/createHotel', productsController.createHotel)
 
-// //Personalize your product
+router.get('/createPackage', productsController.createPackage)
 
-// //specific product
+router.get('/updateFlight', productsController.updateFlight)
 
-// //Product cart
+router.get('/updateHotel', productsController.updateHotel)
 
-// //Delete one cart product
+router.get('/updatePackage', productsController.updatePackage)
 
-// //Edit product
-
-// // Add new product
-
-// //Delete one product
-
+router.get('/deleteConfirm', productsController.deleteConfirm)
 
 module.exports = router

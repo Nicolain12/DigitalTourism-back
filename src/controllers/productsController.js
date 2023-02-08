@@ -1,22 +1,20 @@
-const fs = require('fs');
-const path = require('path');
-const { validationResult } = require('express-validator');
+const { updatePackages } = require("./productsApiController")
 
+module.exports = {
+    // Create product
+    createFlight: (req, res) => { res.render('./products/upload/submitFlight.ejs') },
 
-const productsController = {
+    createHotel: (req, res) => { res.render('./products/upload/submitHotel.ejs') },
 
-// Detail for one especific product
+    createPackage: (req, res) => { res.render('./products/upload/submitPackage.ejs') },
 
-// Upload new information in one product
+    // Update product
+    updateFlight: (req, res) => { res.render('./products/update/updateFlight.ejs') },
 
-// Submit a new product
+    updateHotel: (req, res) => { res.render('./products/update/updateHotel.ejs') },
 
-// Show the complete product list
+    updatePackage: (req, res) => { res.render('./products/update/updatePackage.ejs') },
 
-// Show the on sale product list
-
-//Delete product
-
+    // Delete product
+    deleteConfirm: (req, res) => { res.render('./products/deleteConfirm.ejs') }
 }
-
-module.exports = productsController  
