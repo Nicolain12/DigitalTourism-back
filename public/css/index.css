@@ -85,11 +85,11 @@ header {
     justify-content: center;
     align-items: center;
 }
- 
+
 .div-pages ul li:hover a {
     font-weight: 600;
     text-decoration: underline;
-  }
+}
 
 .div-pages ul li a {
     font-size: 16px;
@@ -98,18 +98,21 @@ header {
     margin: 1% 2% 1% 2%;
 }
 
-.header-select{
+.header-select {
     font-size: 16px;
-    background-color: #304a73;;
+    background-color: #304a73;
+    ;
     color: white;
     border: none;
     cursor: pointer;
 }
-.header-select:hover{
+
+.header-select:hover {
     font-weight: 600;
     border-bottom: 1px solid white;
 }
-.header-select option{
+
+.header-select option {
     background-color: grayz;
     cursor: pointer;
 }
@@ -736,12 +739,13 @@ footer {
 
 /****** LOGGIN END ******/
 /****** CHOOSE ******/
-.main-choose{
+.main-choose {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #b0b7c7;
 }
+
 .choose-main-div {
     background: #24303c;
     width: 100%;
@@ -1068,13 +1072,14 @@ footer {
 
 /****** EDITUSER END ******/
 /****** DELETECONFIRMUSER ******/
-.main-deleteConfirm{
+.main-deleteConfirm {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #b0b7c7;
 }
-.delete-confirm p{
+
+.delete-confirm p {
     margin-top: 0;
     color: white;
 }
@@ -1138,12 +1143,13 @@ footer {
 /****** DELETECONFIRMUSER END ******/
 
 /****** CHOOSECREATE ******/
-.main-chooseCreate{
+.main-chooseCreate {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #b0b7c7;
 }
+
 .chooseCreate-main-div {
     background: #24303c;
     width: 100%;
@@ -1192,9 +1198,11 @@ footer {
         width: 50%;
         margin: 5% 0;
     }
-    .chooseCreate-options a{
+
+    .chooseCreate-options a {
         width: 25%;
     }
+
     .chooseCreate-options {
         flex-direction: row;
         height: 50%;
@@ -1204,3 +1212,176 @@ footer {
 
 
 /****** CHOOSECREATE END ******/
+/****** ARTICLEFLIGHT ******/
+
+.main-flights {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article-flight {
+    cursor: pointer;
+    width: 80%;
+    margin: 3% 0;
+    padding: 2%;
+    background-color: #ffffff;
+    border-bottom: 5px solid rgb(100, 100, 100);
+    border-right: 5px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.article-flight:hover {
+    border-bottom: 1px solid rgb(100, 100, 100);
+    border-right: 1px solid rgb(100, 100, 100);
+}
+
+.img-flight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+}
+
+.img-flight img {
+    width: 100%;
+}
+
+.info-flight-div {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.info-flight-div div {
+    width: 100%;
+    display: flex;
+}
+
+.info-flight-div-1 {
+    justify-content: space-around;
+}
+
+.info-flight-div-2 {
+    flex-direction: column;
+}
+
+.info-flight-div-2 h4 {
+    margin-bottom: 0;
+}
+
+.departure-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.date-f {
+    border-right: #000 1px solid;
+}
+
+.departure-info div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+}
+
+.departure-info div h4 {
+    align-self: self-start;
+    margin: 0;
+}
+
+.departure-info div p {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+.date {
+    margin-top: 4%;
+    margin-bottom: 2%;
+
+}
+
+.line-f{
+    width: 75%;
+    border-top: #000 1px solid;
+}
+
+.hour {
+    margin-top: 2%;
+}
+
+.cabin-type {
+    display: flex;
+}
+
+.cabin-type h4{
+    font-size: 14px;
+}
+.cabin-type p {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.info-flight-div-5 {
+    justify-content: space-between;
+}
+
+.info-flight-div-5 p {
+    margin: 0;
+    width: 50%;
+    font-size: 22px;
+}
+
+.info-flight-div-5 a  {
+    text-decoration: none;
+    margin-bottom: 2%;
+    margin-right: 2%;
+}
+.info-flight-div-5 a i{
+    color: #304a73;
+    font-size: 30px;
+}
+
+.add-cart-flight:hover{
+    color: #1f53c5;
+}
+
+
+@media (min-width: 500px) {
+    .article-flight{
+        width: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    .article-flight{
+        width: 80%;
+        flex-direction: row;
+    }
+    .info-flight-div{
+        margin-left: 2%;
+        justify-content: space-between;
+        margin-bottom: 0
+    }
+    /* .info-flight-div-5{
+        margin-top: 30%;
+    } */
+
+    .info-flight-div div{
+        height: 30%;
+    }
+}
+
+/****** ARTICLEFLIGHT END ******/
