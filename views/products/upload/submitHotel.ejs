@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head') %>
+
+    <body>
+
+        <%- include('../../partials/header') %>
+
+            <main>
+                <form action="" method="POST" enctype="multipart/form-data" class="crate-hotel">
+
+                    <div class="create-hotel-top">
+
+                        <div class="create-hotel-top-1">
+                            <input type="file" id="input-hotel-create" name="productFile" required>
+                            <label class="add-img-label-hotel" for="input-hotel-create">Ingrese una foto del
+                                producto:</label>
+                            <label class="crate-hotel-img-i" for="input-hotel-create"><i
+                                    class="fa-solid fa-image"></i></label>
+                        </div>
+
+                        <div class="create-hotel-top-2">
+                            <!-- *************************************** -->
+                            <section class="create-hotel-name-spot">
+                                <div class="create-hotel-inputDiv">
+                                    <label class="create-hotel-label" for="name">Nombre:</label>
+                                    <input class="create-hotel-input" type="text" id="name" name="name">
+                                </div>
+                                <div class="create-hotel-inputDiv">
+                                    <label class="create-hotel-label" for="spot">Ubicacion:</label>
+                                    <input class="create-hotel-input" type="text" id="spot" name="spot">
+                                </div>
+                            </section>
+                            <!-- *************************************** -->
+                            <section class="create-hotel-description">
+                                <div class="create-hotel-inputDiv">
+                                    <label class="create-hotel-label" for="description">Agregue una descripcion:</label>
+                                    <input class="create-hotel-input" type="textarea" name="description" id="description">
+                                </div>
+                            </section>
+                            <!-- *************************************** -->
+                            <section class="create-hotel-service ">
+                                <div class="create-hotel-inputDiv">
+                                    <label class="create-hotel-label" for="service">Calidad de servico:</label>
+                                    <select name="service" id="service">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="create-hotel-inputDiv">
+                                    <label class="create-hotel-label" for="price">Precio por noche:</label>
+                                    <input class="create-hotel-input" type="number" name="price" id="price">
+                                </div>
+                            </section>
+                            <!-- *************************************** -->
+
+                        </div>
+                    </div>
+
+                    <div class="crate-hotel-button">
+                        <button class="" type="submit">Crear</button>
+                    </div>
+
+                </form>
+            </main>
+
+            <%- include('../../partials/footer') %>
+
+    </body>
+
+</html>

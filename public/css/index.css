@@ -544,7 +544,7 @@ footer {
 .form-register {
     width: 100%;
     background: #24303c;
-    padding: 30px;
+    padding: 2%;
     color: white;
 }
 
@@ -580,12 +580,11 @@ footer {
 }
 
 .controls-register {
-    width: 100%;
+    width: 90%;
     background: #24303c;
-    padding: 10px;
+    padding: 3%;
     border-radius: 4px;
-    margin-top: 16px;
-    margin-bottom: 2%;
+    margin: 3%;
     border: 1px solid #1f53c5;
     font-size: 18px;
     color: white;
@@ -610,6 +609,7 @@ footer {
 }
 
 .form-register .boton-register .botons-register {
+    width: 30%;
     cursor: pointer;
     background: #1f53c5;
     height: 2rem;
@@ -648,7 +648,7 @@ footer {
     }
 
     #admin {
-        margin-top: 15%;
+        margin-top: 6%;
     }
 
     .register-end {
@@ -658,7 +658,9 @@ footer {
 
     .botons-register {
         margin-top: 2%;
-        width: 40%;
+        width: 20%;
+        height: 3rem;
+        font-size: 26px;
     }
 
 }
@@ -682,7 +684,7 @@ footer {
 .controls {
     width: 100%;
     background: #24303c;
-    padding: 10px;
+    padding: 3%;
     border-radius: 4px;
     margin-bottom: 16px;
     border: 1px solid #1f53c5;
@@ -1246,10 +1248,11 @@ footer {
     justify-content: center;
     align-items: center;
     width: 95%;
+    height: 100%;
 }
 
 .img-flight img {
-    width: 100%;
+    height: 100%;
 }
 
 .info-flight-div {
@@ -1292,6 +1295,7 @@ footer {
     flex-direction: column;
     align-items: center;
     width: 45%;
+    height: 100%;
 }
 
 .departure-info div h4 {
@@ -1311,7 +1315,7 @@ footer {
 
 }
 
-.line-f{
+.line-f {
     width: 75%;
     border-top: #000 1px solid;
 }
@@ -1324,9 +1328,10 @@ footer {
     display: flex;
 }
 
-.cabin-type h4{
+.cabin-type h4 {
     font-size: 14px;
 }
+
 .cabin-type p {
     font-size: 14px;
     display: flex;
@@ -1344,44 +1349,757 @@ footer {
     font-size: 22px;
 }
 
-.info-flight-div-5 a  {
+.info-flight-div-5 a {
     text-decoration: none;
     margin-bottom: 2%;
     margin-right: 2%;
 }
-.info-flight-div-5 a i{
+
+.info-flight-div-5 a i {
     color: #304a73;
     font-size: 30px;
 }
 
-.add-cart-flight:hover{
+.add-cart-flight:hover {
     color: #1f53c5;
 }
 
 
+
 @media (min-width: 500px) {
-    .article-flight{
+    .article-flight {
         width: 400px;
     }
 }
 
 @media (min-width: 768px) {
-    .article-flight{
+    .article-flight {
         width: 80%;
+        /* height: 300px; */
+        height: 40%;
         flex-direction: row;
     }
-    .info-flight-div{
+
+    .info-flight-div {
         margin-left: 2%;
         justify-content: space-between;
         margin-bottom: 0
     }
-    /* .info-flight-div-5{
-        margin-top: 30%;
-    } */
 
-    .info-flight-div div{
-        height: 30%;
+    .info-flight-div-5 p,
+    .info-flight-div-5 a {
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 0%;
     }
+
 }
 
 /****** ARTICLEFLIGHT END ******/
+
+/****** ARTICLEHOTEL ******/
+.main-div-hotel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-article-hotel {
+    padding: 2%;
+    margin: 2% 0;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border-bottom: 5px solid rgb(100, 100, 100);
+    border-right: 5px solid rgb(100, 100, 100);
+    transition: all 0.2s;
+}
+
+.main-article-hotel:hover {
+    border-bottom: 1px solid rgb(100, 100, 100);
+    border-right: 1px solid rgb(100, 100, 100);
+}
+
+.hotel-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.hotel-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.name-hotel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.service-hotel {
+    background-color: #b0b7c7;
+    border-radius: 9px;
+    height: fit-content;
+    padding: 2%;
+    position: relative;
+    bottom: 20px;
+}
+
+.service-hotel p {
+    margin: 0;
+}
+
+.spot-hotel p {
+    margin: 0;
+}
+
+.price-hotel {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%
+}
+
+.price-hotel p {
+    margin: 0;
+    width: 50%;
+    font-size: 20px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.price-hotel a {
+    text-decoration: none;
+    margin-bottom: 2%;
+    margin-right: 2%;
+}
+
+.price-hotel a i {
+    color: #304a73;
+    font-size: 30px;
+}
+
+.add-cart-flight:hover {
+    color: #1f53c5;
+}
+
+@media (min-width: 331px) {
+    .main-article-hotel {
+        width: 265px;
+        margin: 3% 3%;
+    }
+
+    .main-div-hotel {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+    }
+}
+
+@media (min-width: 768px) {
+    .main-article-hotel {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-article-hotel {
+        width: 20%;
+        margin: 3% 1%;
+    }
+}
+
+/****** ARTICLEHOTEL END ******/
+/****** ARTICLEPACKAGE ******/
+.main-packages {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.package-article {
+    cursor: pointer;
+    width: 80%;
+    margin: 3% 0;
+    padding: 2%;
+    background-color: #ffffff;
+    border-bottom: 5px solid rgb(100, 100, 100);
+    border-right: 5px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.package-article:hover {
+    border-bottom: 1px solid rgb(100, 100, 100);
+    border-right: 1px solid rgb(100, 100, 100);
+}
+
+.Departure-reach-pack {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.Departure-reach-pack h3 {
+    font-size: 16px;
+    margin: 1% 0;
+}
+
+.second-pack-main-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.img-div-pack {
+    width: 100%;
+    margin-bottom: 2%;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-div-pack img {
+    width: 100%;
+}
+
+.main-pack-info {
+    width: 100%;
+}
+
+.info-pack-div-2 {
+    width: 100%;
+    flex-direction: column;
+}
+
+.info-pack-div-2 h4 {
+    margin-bottom: 0;
+}
+
+.departure-info-pack {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.departure-info-pack div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    height: 100%;
+}
+
+.departure-info-pack div h4 {
+    align-self: self-start;
+    margin: 0;
+}
+
+.departure-info-pack div p {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+.date-pack {
+    margin-top: 4%;
+    margin-bottom: 2%;
+
+}
+
+.hour-pack {
+    margin-top: 2%;
+}
+
+.hotel-info-start {
+    text-align: center;
+    font-weight: 600;
+    border-top: #000 1px dashed;
+    font-size: 18px;
+}
+
+.hotel-info-start h5 {
+    margin-top: 3%;
+}
+
+.name-hotel-pack {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-hotel-pack h3 {
+    margin: 0;
+}
+
+.service-hotel-pack {
+    background-color: #b0b7c7;
+    border-radius: 9px;
+    height: fit-content;
+    padding: 2%;
+}
+
+.service-hotel-pack p {
+    margin: 0;
+}
+
+.info-pack-div-5 {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-pack-div-5 p {
+    margin: 0;
+    width: 50%;
+    font-size: 22px;
+}
+
+.info-pack-div-5 a {
+    text-decoration: none;
+    margin-bottom: 2%;
+    margin-right: 2%;
+}
+
+.info-pack-div-5 a i {
+    color: #304a73;
+    font-size: 30px;
+}
+
+@media (min-width: 500px) {
+    .package-article {
+        width: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    .package-article {
+        width: 80%;
+        height: 40%;
+    }
+
+    .Departure-reach-pack {
+        border-bottom: #000 1px solid;
+        margin-bottom: 3%;
+    }
+
+    .second-pack-main-div {
+        flex-direction: row;
+    }
+
+    .main-pack-info {
+        margin-left: 2%;
+        justify-content: space-between;
+        margin-bottom: 0
+    }
+
+    .img-div-pack img {
+        width: fit-content;
+        height: 100%;
+    }
+
+    .info-pack-div-5 p,
+    .info-pack-div-5 a {
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 0%;
+    }
+
+}
+
+/****** ARTICLEPACKAGE END ******/
+/****** CREATEFLIGHT ******/
+
+.crate-flight {
+    width: 100%;
+    background: #24303c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-createFlight-top {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    width: 100%;
+    align-items: center;
+}
+
+.form-createFlight-top-1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-createFlight-top-1 input {
+    display: none;
+}
+
+.add-img-label-flight {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.form-createFlight-top-1 label {
+    color: #ffffff;
+    margin: 2%;
+}
+
+.form-createFlight-top-1 label i {
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.form-createFlight-top-1 label i:hover {
+    color: #1f53c5;
+    font-size: 34px;
+}
+
+.form-createFlight-top-2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-createFlight-top-2-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-createFlight-inputDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-createFlight-input {
+    width: 100%;
+    background: #24303c;
+    padding: 3%;
+    border-radius: 5px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+    color: white;
+}
+
+.form-createFlight-inputDiv select {
+    width: 100%;
+    background: #24303c;
+    padding: 3%;
+    border-radius: 5px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+    color: white;
+}
+
+.form-createFlight-inputDiv label {
+    margin: 2% 0;
+    color: white
+}
+
+.form-createFlight-bottom {
+    padding: 2%;
+}
+
+.form-createFlight-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mary {
+    width: 30%;
+    cursor: pointer;
+    background: #1f53c5;
+    height: 2rem;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+
+.mary:hover {
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+
+    .form-createFlight-top-1 {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .form-createFlight-top-1 label {
+        display: flex;
+        justify-content: flex-start;
+        width: 40%;
+    }
+
+    .form-createFlight-top-1 label i {
+        color: white;
+        font-size: 40px;
+    }
+
+    .form-createFlight-top-1 label i:hover {
+        color: #1f53c5;
+        font-size: 34px;
+    }
+
+    .form-createFlight-top-2-div {
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 2% 0;
+    }
+
+    .form-createFlight-inputDiv {
+        width: 40%;
+    }
+
+    .mary {
+        width: 20%;
+        height: 3rem;
+        font-size: 26px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .form-createFlight-top-1 label i {
+        color: white;
+        font-size: 50px;
+    }
+
+    .form-createFlight-top-1 label i:hover {
+        color: #1f53c5;
+        font-size: 54px;
+    }
+
+    .form-createFlight-top-1 label {
+        width: 20%;
+    }
+
+}
+
+/****** CREATEFLIGHT END ******/
+/****** CREATEHOTEL ******/
+
+.crate-hotel {
+    width: 100%;
+    background: #24303c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+}
+
+
+.create-hotel-top {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    width: 100%;
+    align-items: center;
+}
+
+.create-hotel-top-1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#input-hotel-create {
+    display: none;
+}
+
+.add-img-label-hotel {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.create-hotel-top-1 label {
+    color: #ffffff;
+}
+
+.crate-hotel-img-i {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.create-hotel-top-1 label i {
+    color: white;
+    font-size: 45px;
+    cursor: pointer;
+    margin-top: 2%;
+}
+
+.create-hotel-top-1 label i:hover {
+    color: #1f53c5;
+    font-size: 34px;
+}
+
+.create-hotel-top-2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.crate-hotel-top-2 section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-hotel-inputDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 2% 0;
+}
+
+.create-hotel-label {
+    color: white;
+}
+
+.create-hotel-input {
+    margin: 1%;
+    width: 100%;
+    background: #24303c;
+    padding: 3%;
+    border-radius: 5px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+    color: white;
+}
+
+.create-hotel-service select {
+    width: 100%;
+    margin: 1%;
+    background: #24303c;
+    padding: 3%;
+    border-radius: 5px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+    color: white;
+
+}
+
+.crate-hotel-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.crate-hotel-button button{
+    width: 30%;
+    cursor: pointer;
+    background: #1f53c5;
+    height: 2rem;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+.crate-hotel-button button:hover {
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+
+    .create-hotel-top-1 {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .create-hotel-top-1 label {
+        display: flex;
+        justify-content: flex-start;
+        width: 40%;
+    }
+
+    .create-hotel-top-1 label i {
+        color: white;
+        font-size: 40px;
+    }
+
+    .create-hotel-top-1 label i:hover {
+        color: #1f53c5;
+        font-size: 34px;
+    }
+
+    .create-hotel-name-spot, .create-hotel-service {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 2% 0;
+    }
+
+    .create-hotel-name-spot div, .create-hotel-service div{
+        width: 45%;
+    }
+
+
+    .form-createFlight-inputDiv {
+        width: 40%;
+    }
+
+    .crate-hotel-button button {
+        width: 20%;
+        height: 3rem;
+        font-size: 26px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .create-hotel-top-1 {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .create-hotel-top-1 label {
+        display: flex;
+        width: 20%;
+        justify-content: center;
+    }
+    .create-hotel-top-1 label i {
+        color: white;
+        font-size: 50px;
+    }
+
+    .create-hotel-top-1 label i:hover {
+        color: #1f53c5;
+        font-size: 54px;
+    }
+
+  .fa-solid{
+    margin-top: 2%;
+  }
+}
+
+
+/****** CREATEHOTEL END ******/
+
+/****** CREATEPACKAGE ******/
+/****** CREATEPACKAGE END ******/
