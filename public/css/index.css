@@ -745,16 +745,17 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #b0b7c7;
+    background: #24303c;
+    height: 90vh;
 }
 
 .choose-main-div {
     background: #24303c;
     width: 100%;
     height: 40vh;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 50px rgb(100, 100, 100);
 }
 
 .choose-title {
@@ -777,6 +778,7 @@ footer {
 
 .choose-options a {
     background-color: #1f53c5;
+    border-radius: 5px;
     color: white;
     text-decoration: none;
     width: 40%;
@@ -791,10 +793,15 @@ footer {
 }
 
 @media (min-width: 768px) {
+    .main-choose {
+        background-color: #b0b7c7;
+    }
+
     .choose-main-div {
         height: 30vh;
         width: 50%;
         margin: 5% 0;
+        box-shadow: 0 0 50px rgb(100, 100, 100);
     }
 
     .choose-options {
@@ -1149,16 +1156,17 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #b0b7c7;
+    background: #24303c;
+    height: 90vh;
 }
 
 .chooseCreate-main-div {
     background: #24303c;
     width: 100%;
     height: 40vh;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 50px rgb(100, 100, 100);
 }
 
 .chooseCreate-title {
@@ -1182,6 +1190,7 @@ footer {
 .chooseCreate-options a {
     background-color: #1f53c5;
     color: white;
+    border-radius: 5px;
     text-decoration: none;
     width: 40%;
     text-align: center;
@@ -1195,10 +1204,16 @@ footer {
 }
 
 @media (min-width: 768px) {
+    .main-chooseCreate {
+        background-color: #b0b7c7;
+    }
+
     .chooseCreate-main-div {
         height: 30vh;
         width: 50%;
         margin: 5% 0;
+        box-shadow: 0 0 50px rgb(100, 100, 100);
+
     }
 
     .chooseCreate-options a {
@@ -1209,7 +1224,6 @@ footer {
         flex-direction: row;
         height: 50%;
     }
-
 }
 
 
@@ -1993,6 +2007,8 @@ footer {
     color: white;
 }
 
+
+
 .create-hotel-service select {
     width: 100%;
     margin: 1%;
@@ -2005,13 +2021,13 @@ footer {
 
 }
 
-.crate-hotel-button{
+.crate-hotel-button {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.crate-hotel-button button{
+.crate-hotel-button button {
     width: 30%;
     cursor: pointer;
     background: #1f53c5;
@@ -2020,6 +2036,7 @@ footer {
     color: white;
     font-size: 16px;
 }
+
 .crate-hotel-button button:hover {
     box-shadow: 0 0 30px rgb(100, 100, 100);
     font-weight: 600;
@@ -2049,14 +2066,16 @@ footer {
         font-size: 34px;
     }
 
-    .create-hotel-name-spot, .create-hotel-service {
+    .create-hotel-name-spot,
+    .create-hotel-service {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin: 2% 0;
     }
 
-    .create-hotel-name-spot div, .create-hotel-service div{
+    .create-hotel-name-spot div,
+    .create-hotel-service div {
         width: 45%;
     }
 
@@ -2078,11 +2097,13 @@ footer {
         align-items: flex-start;
         justify-content: flex-start;
     }
+
     .create-hotel-top-1 label {
         display: flex;
         width: 20%;
         justify-content: center;
     }
+
     .create-hotel-top-1 label i {
         color: white;
         font-size: 50px;
@@ -2093,13 +2114,299 @@ footer {
         font-size: 54px;
     }
 
-  .fa-solid{
-    margin-top: 2%;
-  }
+    .fa-solid {
+        margin-top: 2%;
+    }
 }
 
 
 /****** CREATEHOTEL END ******/
 
 /****** CREATEPACKAGE ******/
+
+.crate-package {
+    width: 100%;
+    background: #24303c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+}
+
+.create-package-discount{
+    width: 100%;
+    display: flex;
+    padding-bottom: 2%;
+    border-bottom: #1f53c5 1px dashed;
+}
+
+.create-package-discount label{
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.create-package-discount input {
+    width: 50%;
+    background: #24303c;
+    margin-left: 5%;
+    padding: 1%;
+    border-radius: 5px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+    color: white;
+}
+
+.create-package-main-div section {
+    display: flex;
+    flex-direction: column;
+}
+.section-pack-2 {
+    border-top:1px solid #1f53c5;
+
+}
+.create-package-main-div section h2{
+    width: 100%;
+    text-align: center;
+    color: white
+}
+
+.create-package-main-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-package-hotel {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    width: 100%;
+    align-items: center;
+}
+
+.create-package-flight {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    width: 100%;
+    align-items: center;
+}
+
+
+@media (min-width: 1000px) {
+    .create-package-main-div {
+        flex-direction: row;
+    }
+
+    .create-package-main-div section {
+        width: 50%;
+    }
+
+    .section-pack-2 {
+        border-left: #1f53c5 solid 1px;
+        border-top: none;
+    }
+}
+
+
+/* flight */
+
+.form-pack-flight-top-1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-pack-flight-top-1 input {
+    display: none;
+}
+
+.add-img-label-pack-flight {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.form-pack-flight-top-1 label {
+    color: #ffffff;
+    margin: 2%;
+}
+
+.form-pack-flight-top-1 label i {
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.form-pack-flight-top-1 label i:hover {
+    color: #1f53c5;
+    font-size: 34px;
+}
+
+.form-pack-flight-top-2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-pack-flight-top-2-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-pack-flight-inputDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-pack-flight-input {
+    width: 100%;
+    background: #24303c;
+    padding: 3%;
+    border-radius: 5px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+    color: white;
+}
+
+.form-pack-flight-inputDiv select {
+    width: 100%;
+    background: #24303c;
+    padding: 3%;
+    border-radius: 5px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+    color: white;
+}
+
+.form-pack-flight-inputDiv label {
+    margin: 2% 0;
+    color: white
+}
+
+.form-pack-flight-bottom {
+    padding: 2%;
+}
+
+.form-pack-flight-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hotel */
+
+.pack-hotel-top-1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#input-pack-hotelv {
+    display: none;
+}
+
+.add-img-label-pack-hotel {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.pack-hotel-top-1 label {
+    color: #ffffff;
+}
+
+.pack-hotel-img-i {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pack-hotel-top-1 label i {
+    color: white;
+    font-size: 45px;
+    cursor: pointer;
+    margin-top: 2%;
+}
+
+.pack-hotel-top-1 label i:hover {
+    color: #1f53c5;
+    font-size: 34px;
+}
+
+.pack-hotel-top-2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pack-hotel-top-2 section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pack-hotel-inputDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 2% 0;
+}
+
+.pack-hotel-label {
+    color: white;
+}
+
+.pack-hotel-input {
+    margin: 1%;
+    width: 100%;
+    background: #24303c;
+    padding: 3%;
+    border-radius: 5px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+    color: white;
+}
+
+
+
+.pack-hotel-service select {
+    width: 100%;
+    margin: 1%;
+    background: #24303c;
+    padding: 3%;
+    border-radius: 5px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+    color: white;
+
+}
+
+.pack-hotel-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pack-hotel-button button {
+    width: 30%;
+    margin-top: 3%;
+    cursor: pointer;
+    background: #1f53c5;
+    height: 2rem;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+
+.pack-hotel-button button:hover {
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+    font-weight: 600;
+}
 /****** CREATEPACKAGE END ******/
