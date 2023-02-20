@@ -19,7 +19,7 @@ app.use(methodOverride("_method"))
 const publicPath = path.join(__dirname, '../public')
 app.use(express.static(publicPath))
 
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 
 //Cookie
 const cookieParser = require('cookie-parser')

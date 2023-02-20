@@ -2,7 +2,8 @@
 // const { application } = require('express');
 // const { Op } = require("sequelize");
 const db = require('../database/models');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const { on } = require('nodemon');
 const Users = db.User
 
 module.exports = {
@@ -92,33 +93,29 @@ module.exports = {
                 email: req.body.email,
                 password: req.body.password
             }
-            console.log('user:');
-            console.log(user);
-
-
+            console.log(user);//CL
             const userInDb = await Users.findAll({
                 where: {
                     email: user.email
                 }
             })
-
             const finded = userInDb[0].dataValues
-
             if (userInDb.length > 0) {
                 let passwordCheck = bcrypt.compareSync(user.password, finded.password)
                 if (passwordCheck) {
+                    if(req.body.remember){
+                        res.cookie('userEmailCookie', user.email);
+                    }
                     delete finded.password
                     req.session.userLogged = finded
                     response.data = finded
                     return res.json(response)
                 } else {
-                    return new Error('Ivalid password')
+                    return new Error('Contraseña invalida')
                 }
             } else {
-                return new Error('Invalid data')
+                return new Error('Informacion invalida')
             }
-
-
         } catch (e) {
             response.info.status = 400
             response.info.msg = e.message

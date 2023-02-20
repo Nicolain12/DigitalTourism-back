@@ -18,16 +18,23 @@ font-family: 'Roboto', sans-serif; (bold: 200, 400 y 600)
 
 /****** ERROR ******/
 .error-msg {
-    margin-top: 0;
+    margin-top: 2%;
     margin-bottom: 0;
     color: red;
     font-size: 18px;
-
     display: block;
+    width: 100%;
+    text-align: start;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+}
+
+.password-set-register{
+    margin: 2% 0 0%;
+    width: 100%;
+    color: red;
 }
 
 /****** ERROR END ******/
@@ -37,6 +44,9 @@ header {
     background-color: #304a73;
     display: flex;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 6;
 }
 
 /*LOGO*/
@@ -101,7 +111,6 @@ header {
 .header-select {
     font-size: 16px;
     background-color: #304a73;
-    ;
     color: white;
     border: none;
     cursor: pointer;
@@ -2133,18 +2142,19 @@ footer {
     padding: 2%;
 }
 
-.create-package-discount{
+.create-package-discount {
     width: 100%;
     display: flex;
     padding-bottom: 2%;
     border-bottom: #1f53c5 1px dashed;
 }
 
-.create-package-discount label{
+.create-package-discount label {
     color: white;
     display: flex;
     align-items: center;
 }
+
 .create-package-discount input {
     width: 50%;
     background: #24303c;
@@ -2160,11 +2170,13 @@ footer {
     display: flex;
     flex-direction: column;
 }
+
 .section-pack-2 {
-    border-top:1px solid #1f53c5;
+    border-top: 1px solid #1f53c5;
 
 }
-.create-package-main-div section h2{
+
+.create-package-main-div section h2 {
     width: 100%;
     text-align: center;
     color: white
@@ -2409,4 +2421,868 @@ footer {
     box-shadow: 0 0 30px rgb(100, 100, 100);
     font-weight: 600;
 }
+
 /****** CREATEPACKAGE END ******/
+/****** DETAILFLIGHT ******/
+.section-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carousel_detail-flight {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.carousel_detail-flight img {
+    width: 100%;
+}
+
+.detail-flight-info {
+    margin-top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-flight-info-title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 2%;
+}
+
+.detail-flight-info-maininfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-flight-info-header {
+    background-color: #1f53c5;
+    display: flex;
+    justify-content: center;
+}
+
+.detail-flight-info-header h3 {
+    color: white;
+}
+
+.detail-flight-info-data {
+    background-color: white;
+    display: flex;
+}
+
+.detail-flight-departure,
+.detail-flight-reach {
+    width: 100%;
+    padding: 2%;
+}
+
+.detail-flight-departure h5 {
+    margin-top: 0;
+}
+
+.detail-flight-h4 {
+    width: 100%;
+    margin: 0;
+}
+
+.detail-flight-date {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-left: #000 1px solid;
+
+}
+
+.detail-flight-hour {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-left: #000 1px solid;
+}
+
+.detail-flight-airline-info {
+    width: 100%;
+}
+
+.detail-flight-button-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.btn-df-edit,
+.btn-df-delete {
+    margin-top: 2%;
+}
+
+.btn-df-edit {
+    margin-bottom: 2%;
+}
+
+.detail-flight-button-buy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.detail-flight-button-buy p {
+    width: 30%;
+    margin: 2%;
+}
+
+.btn-df-edit,
+.btn-df-buy {
+    width: 30%;
+    cursor: pointer;
+    background: #1f53c5;
+    height: 2rem;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+
+.btn-df-delete {
+    width: 30%;
+    cursor: pointer;
+    background: red;
+    height: 2rem;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+
+.btn-df-edit:hover,
+.btn-df-buy:hover,
+.btn-df-delete:hover {
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+
+    .detail-flight-button {
+        width: 20%;
+        height: 3rem;
+        font-size: 26px;
+    }
+
+    .detail-flight-button-section {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-end;
+        margin: 2% 0;
+    }
+
+    .detail-flight-button-buy {
+        width: 30%;
+    }
+
+    .detail-flight-button-buy p {
+        width: 100%;
+        margin: 2%;
+    }
+
+    .btn-df-edit,
+    .btn-df-buy,
+    .btn-df-delete {
+        margin: 0;
+    }
+
+    .btn-df-buy {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .detail-flight-info,
+    .detail-flight-airline-info {
+        width: 90%;
+    }
+
+    .detail-flight-info-header {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .detail-flight-info-data {
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .detail-flight-info-title h3,
+    .detail-flight-info-header h3,
+    .detail-flight-h4,
+    .detail-flight-date,
+    .detail-flight-hour,
+    .detail-flight-departure h5,
+    .detail-flight-description h5,
+    .detail-flight-description p,
+    .btn-df-edit,
+    .btn-df-buy,
+    .btn-df-delete,
+    .detail-flight-button-buy p {
+        font-size: 26px;
+    }
+
+}
+
+/* DETAILHOTEL (has same css) */
+/* DETAILPACKAGE (has same css) */
+.detail-package-separation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-top: #000 2px dashed;
+    margin-top: 2%;
+}
+
+.detail-package-separation h2 {
+    font-size: 24px;
+    margin: 2%;
+}
+
+@media (min-width: 768px) {
+    .detail-package-separation h2 {
+        font-size: 30px;
+    }
+}
+
+/****** DETAILFLIGHT END ******/
+/****** CART ******/
+.cart-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b0b7c7;
+}
+
+/* Flights */
+
+.cart-flight-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: grey 1px solid;
+}
+
+.cart-flight-section h2 {
+    width: 100%;
+    padding-left: 2%;
+    color: grey;
+}
+
+.cart-article-flight-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.cart-article-flight {
+    cursor: pointer;
+    width: 80%;
+    margin: 3% 0;
+    padding: 2%;
+    background-color: #ffffff;
+    border-bottom: 5px solid rgb(100, 100, 100);
+    border-right: 5px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.cart-article-flight:hover {
+    border-bottom: 1px solid rgb(100, 100, 100);
+    border-right: 1px solid rgb(100, 100, 100);
+}
+
+.cart-tools-flight {
+    width: 80%;
+    display: flex;
+}
+
+.cart-add-subtract-item-f {
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.cart-add-item-f {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-add-item-f i {
+    cursor: pointer;
+    padding: 15%;
+    border: #1f53c5 2px solid;
+    color: #1f53c5;
+    border-radius: 30px;
+    font-size: 30px;
+    transition: all 0.5s;
+}
+
+.cart-number-item-f {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.cart-subtract-item-f {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-subtract-item-f i {
+    cursor: pointer;
+    padding: 15%;
+    border: #1f53c5 2px solid;
+    color: #1f53c5;
+    border-radius: 30px;
+    font-size: 30px;
+    transition: all 0.5s;
+}
+
+.cart-add-item-f i:hover,
+.cart-subtract-item-f i:hover {
+    border: white 1px solid;
+    color: white;
+    font-size: 34px;
+    background-color: #1f53c5;
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+
+}
+
+.cart-delete-item-f {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-delete-item-f p {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-delete-item-f p i {
+    cursor: pointer;
+    padding: 15%;
+    border: red 2px solid;
+    color: red;
+    border-radius: 30px;
+    font-size: 30px;
+    transition: all 0.5s;
+}
+
+.cart-delete-item-f p i:hover {
+    border: white 1px solid;
+    color: white;
+    font-size: 34px;
+    background-color: red;
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+}
+
+/* Hotels */
+
+.cart-hotel-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: grey 1px solid;
+}
+
+.cart-hotel-section h2 {
+    width: 100%;
+    padding-left: 2%;
+    color: grey;
+}
+
+.cart-hotel-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.cart-article-hotel-div {
+    width: 80%;
+}
+
+.cart-article-hotel {
+    padding: 2%;
+    margin: 2% 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border-bottom: 5px solid rgb(100, 100, 100);
+    border-right: 5px solid rgb(100, 100, 100);
+    transition: all 0.2s;
+}
+
+.cart-article-hotel:hover {
+    border-bottom: 1px solid rgb(100, 100, 100);
+    border-right: 1px solid rgb(100, 100, 100);
+}
+
+.cart-tools-hotel {
+    width: 100%;
+    display: flex;
+}
+
+.cart-add-subtract-item-h {
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.cart-add-item-h {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-add-item-h i {
+    cursor: pointer;
+    padding: 15%;
+    border: #1f53c5 2px solid;
+    color: #1f53c5;
+    border-radius: 30px;
+    font-size: 30px;
+    transition: all 0.5s;
+}
+
+.cart-number-item-h {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.cart-subtract-item-h {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-subtract-item-h i {
+    cursor: pointer;
+    padding: 15%;
+    border: #1f53c5 2px solid;
+    color: #1f53c5;
+    border-radius: 30px;
+    font-size: 30px;
+    transition: all 0.5s;
+}
+
+.cart-add-item-h i:hover,
+.cart-subtract-item-h i:hover {
+    border: white 1px solid;
+    color: white;
+    font-size: 34px;
+    background-color: #1f53c5;
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+
+}
+
+.cart-delete-item-h {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-delete-item-h p {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-delete-item-h p i {
+    cursor: pointer;
+    padding: 15%;
+    border: red 2px solid;
+    color: red;
+    border-radius: 30px;
+    font-size: 30px;
+    transition: all 0.5s;
+}
+
+.cart-delete-item-h p i:hover {
+    border: white 1px solid;
+    color: white;
+    font-size: 34px;
+    background-color: red;
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+}
+
+/* Package */
+
+.cart-package-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-package-section h2 {
+    width: 100%;
+    padding-left: 2%;
+    color: grey;
+}
+
+.cart-package-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-article-package-div {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-package-article {
+    cursor: pointer;
+    width: 100%;
+    margin: 3% 0;
+    padding: 2%;
+    background-color: #ffffff;
+    border-bottom: 5px solid rgb(100, 100, 100);
+    border-right: 5px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.cart-package-article:hover {
+    border-bottom: 1px solid rgb(100, 100, 100);
+    border-right: 1px solid rgb(100, 100, 100);
+}
+
+.cart-tools-package {
+    width: 100%;
+    display: flex;
+}
+
+.cart-tools-package-top {
+    width: 60%;
+}
+
+.cart-tools-package-specification {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-add-subtract-item-p {
+    /* width: 60%; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cart-add-item-p {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-add-item-p i {
+    cursor: pointer;
+    padding: 15%;
+    border: #1f53c5 2px solid;
+    color: #1f53c5;
+    border-radius: 30px;
+    font-size: 30px;
+    transition: all 0.5s;
+}
+
+.cart-number-item-p {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.cart-subtract-item-p {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-subtract-item-p i {
+    cursor: pointer;
+    padding: 15%;
+    border: #1f53c5 2px solid;
+    color: #1f53c5;
+    border-radius: 30px;
+    font-size: 30px;
+    transition: all 0.5s;
+}
+
+.cart-add-item-h i:hover,
+.cart-subtract-item-p i:hover {
+    border: white 1px solid;
+    color: white;
+    font-size: 34px;
+    background-color: #1f53c5;
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+
+}
+
+.cart-delete-item-p {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-delete-item-p p {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-delete-item-p p i {
+    cursor: pointer;
+    padding: 15%;
+    border: red 2px solid;
+    color: red;
+    border-radius: 30px;
+    font-size: 30px;
+    transition: all 0.5s;
+}
+
+.cart-delete-item-p p i:hover {
+    border: white 1px solid;
+    color: white;
+    font-size: 34px;
+    background-color: red;
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+}
+
+.cart-flight-section,
+.cart-hotel-section {
+    padding-bottom: 2%;
+}
+
+/* Buttons */
+.cart-button-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% 0;
+}
+
+.cart-total {
+    width: 100%;
+    padding: 3%;
+    border-top: 1px solid grey;
+    display: flex;
+}
+
+.cart-total p {
+    font-size: 28px;
+    margin: 0 2%;
+}
+
+.cart-total-numb {
+    border-bottom: #000 1px dashed;
+}
+
+.cart-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-button-buy {
+    margin: 1%;
+    color: white;
+    background-color: #1f53c5;
+    width: 60%;
+    height: 2em;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.cart-button-buy:hover {
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+}
+
+.cart-button-delete {
+    margin: 1%;
+    color: white;
+    background-color: red;
+    width: 60%;
+    height: 2em;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cart-button-delete:hover {
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 0 30px rgb(100, 100, 100);
+}
+
+@media (min-width: 500px) {
+    .cart-article-flight {
+        width: 400px;
+    }
+
+    .cart-tools-flight {
+        width: 400px;
+    }
+
+    .cart-article-hotel-div {
+        width: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    .cart-article-flight {
+        width: 80%;
+        height: 40%;
+        flex-direction: row;
+    }
+
+    .cart-tools-flight {
+        width: 10%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-article-flight-div {
+        flex-direction: row;
+        justify-content: space-around;
+        padding-right: 2%;
+        width: 100%;
+    }
+
+    .cart-add-subtract-item-f {
+        width: 100%;
+    }
+
+    .cart-delete-item-f {
+        width: 80%;
+    }
+
+    .cart-add-item-f i {
+        padding: 5%;
+        border-radius: 20px;
+        font-size: 30px;
+    }
+
+    .cart-subtract-item-f i {
+        padding: 5%;
+        border-radius: 20px;
+        font-size: 30px;
+    }
+
+    .cart-add-item-f i:hover,
+    .cart-subtract-item i:hover {
+        font-size: 34px;
+    }
+
+
+    .cart-delete-item-f p i {
+        padding: 10%;
+        border-radius: 30px;
+        font-size: 26px;
+    }
+
+    .cart-delete-item-f p i:hover {
+        font-size: 34px;
+    }
+
+    /* Hotels */
+    .cart-article-hotel-div {
+        width: 400px;
+    }
+
+    .cart-hotel-div {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    /* Package */
+    .cart-article-package-div {
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .cart-package-article {
+        width: 80%;
+    }
+
+    .cart-tools-package {
+        width: 10%;
+        flex-direction: column;
+    }
+
+    .cart-tools-package-top {
+        width: 100%;
+    }
+
+    .cart-tools-package-specification {
+        width: 100%;
+    }
+
+    .cart-delete-item-p {
+        width: 100%;
+    }
+
+    /* Buttons */
+    .cart-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .cart-button-buy {
+        width: 30%;
+    }
+
+    .cart-button-delete {
+        width: 30%;
+    }
+
+}
+
+
+
+/****** CART END ******/

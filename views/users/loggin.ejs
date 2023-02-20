@@ -9,19 +9,19 @@
 
     <main>
 
-        <form class="form-login" action="/users/loggin" method="POST">
+        <form class="form-login"  method="POST">
 
             <h4>Iniciar sesión </h4>
-            <input class="controls" value="<%= locals.old && old.email %>"  type="email" name="email"  id="email" placeholder="Ingrese su Correo">
-            <% if (locals.errors && errors.email) { %>
-                <p class="error-msg"><%= errors.email.msg %> </p>
-            <% } %>
+
+            <h6 class="error-msg" id="errors-email-loggin"></h6>
+            
+            <input class="controls" value=""  type="email" name="email"  id="email" placeholder="Ingrese su Correo">
+
+            <h6 class="error-msg" id="errors-password-loggin"></h6>
+            
             <input class="controls" type="password" name="password" id="password" placeholder="Ingrese su Contraseña">
-            <% if (locals.errors && errors.password) { %>
-                <p class="error-msg"><%= errors.password.msg %> </p>
-            <% } %>
-            <label for="remember"> <input type="checkbox" name="remember" > Recordarme </label>
-            <button class="botons" type="submit">Iniciar sesion</button>
+            <label for="remember"> <input id="remember" type="checkbox" name="remember" > Recordarme </label>
+            <button id="button-loggin" class="botons" type="submit">Iniciar sesion</button>
             <p> ¿Se te olvidó tu contraseña?<a href="#"> Click Aqui</a></p>
 
         </form>

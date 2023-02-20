@@ -1,176 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head') %>
-<body>
+<%- include('../../partials/head') %>
 
-    <%- include('../partials/header') %> 
+    <body>
 
-    <main class="main-detail">
-        <section class="carousel_section">
-            <div class="container">
-                <div class="carousel">
-                    <input type="radio" name="slides" checked="checked" id="slide-1">
-                    <input type="radio" name="slides" id="slide-2">
-                    <input type="radio" name="slides" id="slide-3">
-                    <input type="radio" name="slides" id="slide-4">
-                    <input type="radio" name="slides" id="slide-5">
-                    <input type="radio" name="slides" id="slide-6">
-                    <ul class="carousel__slides">
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="/images/backgroundBeach.jpg" alt="">
+        <%- include('../../partials/header') %>
+
+            <main class="main-detail-flight">
+                <section class="section-info">
+
+                    <div class="carousel_detail-flight">
+                        <img src="/images/flights/495536-lasvegas.webp" alt="">
+                    </div>
+
+                    <div class="detail-flight-info">
+                        <div class="detail-flight-info-maininfo">
+                            <div class="detail-flight-info-header">
+                                <h3>Departure ---> Reach</h3>
+                            </div>
+                            <div class="detail-flight-info-data">
+                                <div class="detail-flight-departure">
+                                    <h4 class="detail-flight-h4">Salida:</h4>
+                                    <p class="detail-flight-date">Date</p>
+                                    <p class="detail-flight-hour">Hour</p>
                                 </div>
-                            </figure>
-                        </li>
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="/images/backgroundMountain.webp" alt="">
+                                <div class="detail-flight-reach">
+                                    <h4 class="detail-flight-h4">Llegada:</h4>
+                                    <p class="detail-flight-date">Date</p>
+                                    <p class="detail-flight-hour">Hour</p>
                                 </div>
-                            </figure>
-                        </li>
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="/images/backgroundSnow.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-flight-info">
+                        <div class="detail-flight-info-title">
+                            <h3>Informacion de la aerolinea</h3>
+                        </div>
+
+                        <div class="detail-flight-info-maininfo">
+                            <div class="detail-flight-info-header">
+                                <h3>Airline: "Airline"</h3>
+                            </div>
+                            <div class="detail-flight-info-data">
+                                <div class="detail-flight-departure">
+                                    <h5>Cabina: "Tal Cabina"</h5>
+                                    <div class="detail-flight-description">
+                                        <h5>Descripcion</h5>
+                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                            Officiis minima maxime voluptatibus, magni delectus culpa, assumenda eum m
+                                            inus deserunt enim nulla, quam debitis modi et perspiciatis sint consequatur
+                                            sapiente praesentium.</p>
+                                    </div>
                                 </div>
-                            </figure>
-                        </li>
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="/images/backgroundBeach.jpg" alt="">
-                                </div>
-                            </figure>
-                        </li>
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="/images/backgroundMountain.webp" alt="">
-                                </div>
-                            </figure>
-                        </li>
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="/images/backgroundSnow.jpg" alt="">
-                                </div>
-                            </figure>
-                        </li>
-                    </ul>
-                    <ul class="carousel__thumbnails">
-                        <li>
-                            <label for="slide-1"><img src="/images/backgroundBeach.jpg" alt=""></label>
-                        </li>
-                        <li>
-                            <label for="slide-2"><img src="/images/backgroundMountain.webp" alt=""></label>
-                        </li>
-                        <li>
-                            <label for="slide-3"><img src="/images/backgroundSnow.jpg" alt=""></label>
-                        </li>
-                        <li>
-                            <label for="slide-4"><img src="/images/backgroundBeach.jpg" alt=""></label>
-                        </li>
-                        <li>
-                            <label for="slide-5"><img src="/images/backgroundMountain.webp" alt=""></label>
-                        </li>
-                        <li>
-                            <label for="slide-6"><img src="/images/backgroundSnow.jpg" alt=""></label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+                            </div>
+                        </div>
+                    </div>
 
+                </section>
 
-        <section class="product_detail">
-            <div class="div-classification">
-                <label class="classification">Detalle ida</label>
-            </div>
-            <section class="detail">
-                <div class="departure_time">
-                    <label></label>
-                    <label>9:00 </label>
-                    <label>STG</label>
-                </div>
-                <div class="duration">
-                    <label>Duracion</label>
-                    <label>3 h 45 min</label>
-                </div>
-                <div class="time_of_arrival">
-                    <label></label>
-                    <label>19:20</label>
-                    <label>LIM</label>
-                </div>
-            </section>
-            <div class="final">
-                <label class="final-detail">Vuelo de ida • 04 dic 2022</label>
-            </div>
-        </section>
-        <section class="product_detail">
-            <div class="div-classification">
-                <label class="classification">Detalle de vuelta</label>
-            </div>
-            <section class="detail">
-                <div class="departure_time">
-                    <label></label>
-                    <label>9:00 </label>
-                    <label>LIM</label>
-                </div>
-                <div class="duration">
-                    <label>Duracion</label>
-                    <label>3 h 45 min</label>
-                </div>
-                <div class="time_of_arrival">
-                    <label></label>
-                    <label>19:20</label>
-                    <label>STG</label>
-                </div>
-            </section>
-            <div class="final">
-                <label class="final-detail">Vuelo de vuelta • 10 dic 2022</label>
-            </div>
-        </section>
+                <section class="detail-flight-button-section">
+                    <button class="detail-flight-button btn-df-edit">Editar</button>
+                    <button class="detail-flight-button btn-df-delete">Eliminar</button>
+                    <div class="detail-flight-button-buy">
+                        <p>Price: $999999</p>
+                        <button class="detail-flight-button btn-df-buy">Comprar</button>
+                    </div>
+                </section>
+            </main>
 
+            <%- include('../../partials/footer') %>
 
-        <section class="product_detail">
-            <div class="div-classification">
-                <label class="classification">Detalle Hotel</label>
-            </div>
-            <section class="detail">
-                <div class="price">
-                    <label>hotel</label>
-                    <label>CLP 91.865</label>
-                </div>
-            </section>
-        </section>
+    </body>
 
-        <section class="product_detail">
-            <div class="div-classification">
-                <label class="classification">Detalle servicios</label>
-            </div>
-            <section class="detail">
-                <div class="price">
-                    <label>auto</label>
-                    <label>CLP 91.865</label>
-                </div>
-            </section>
-        </section>
-        
-        <div class="action-buttons">
-            <section id="product-editProduct-a">
-                <a href="/products/<%= product.id %>/edit">Editar producto</a>    
-            </section>
-            <form class="product-editProduct-a-del" action="/products/<%= product.id %>?_method=DELETE" method="POST">
-                <button type="submit">DELETE</button>
-            </form>
-        </div>
-
-
-    </main>
-
-    <%- include('../partials/footer') %> 
-
-</body>
 </html>

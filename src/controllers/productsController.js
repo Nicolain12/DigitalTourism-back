@@ -16,5 +16,13 @@ module.exports = {
     updatePackage: (req, res) => { res.render('./products/update/updatePackage.ejs') },
 
     // Delete product
-    deleteConfirm: (req, res) => { res.render('./products/deleteConfirm.ejs') }
+    deleteConfirm: (req, res) => { res.render('./products/deleteConfirm.ejs') },
+
+    // Detail
+    detailFlight: (req, res) => {res.render('./products/detail/detailFlight.ejs')},
+
+    detailHotel: (req, res) => {res.render('./products/detail/detailHotel.ejs')}, 
+
+    detailPackage: (req, res) => {res.render('./products/detail/detailPackage.ejs')},
+
 }
