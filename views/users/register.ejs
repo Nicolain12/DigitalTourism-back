@@ -5,8 +5,8 @@
     <body>
         <%- include('../partials/header') %>
 
-            <main>
-                <form class="form-register" action="" enctype="multipart/form-data" method="POST">
+            <main> 
+                <form class="form-register" id="form-register"  enctype="multipart/form-data">
                         <p class="error-msg">
                         </p>
                             <h4>Formulario Registro</h4>
@@ -14,7 +14,7 @@
 
                                 <div class="main-register-from-top-1">
                                     <label for="userImg-register">Ingrese una foto:</label>
-                                    <input type="file" id="userImg-register"name="userImg" accept="image/*" multiple>
+                                    <input type="file" id="userImg-register"name="userImg">
                                         <p class="error-msg">
                                         </p>
                                 </div>
@@ -23,13 +23,13 @@
                                 <div class="register-top">
                                     <div class="input-div">
                                         <label class="first-label" for="name-register">Ingrese su Nombre:</label>
+                                        <h5 id='name-set-register' class="error-set"></h5>
                                         <input class="controls-register" type="text" name="name"
                                             value="" id="name-register" />
-                                            <p class="error-msg">
-                                            </p>
                                     </div>
                                     <div class="input-div">
                                         <label for="surname-register">Ingrese su Apellido:</label>
+                                        <h5 id='surname-set-register' class="error-set"></h5>
                                         <input class="controls-register" type="text" name="surname"
                                             value="" id="surname-register" />
                                             <p class="error-msg">
@@ -42,6 +42,10 @@
                                 <div class="register-middle">
                                     <div class="input-div">
                                         <label for="email-register">Ingrese su Email:</label>
+                                        <div class="set-password-div">
+                                            <h5 id='email-set-register' class="error-set"></h5>
+                                            <h5 id='email-set-alert-register' class="error-set"></h5>
+                                        </div>
                                         <input class="controls-register" type="email" name="email"
                                             value="" id="email-register" />
                                             <p class="error-msg">
@@ -49,7 +53,8 @@
                                     </div>
                                     <div class="age-type">
                                         <div class="input-div">
-                                            <label for="age-register">Ingrese su edad:</label>
+                                            <label for="age-register">Fecha de nacimiento:</label>
+                                            <h5 id='age-set-register' class="error-set"></h5>
                                             <input class="controls-register" type="date" name="age" value=""
                                                 id="age-register" />
                                                 <p class="error-msg">
@@ -57,9 +62,10 @@
                                         </div>
                                         <div class="input-div">
                                             <label for="admin-register">Tipo de usuario:</label>
+                                            <h5 id='admin-set-register' class="error-set"></h5>
                                             <select name="isAdmin" id="admin">
-                                                <option value="true">Cliente</option>
-                                                <option value="false">Administrador</option>
+                                                <option value="false">Cliente</option>
+                                                <option value="true">Administrador</option>
                                             </select>
                                                 <p class="error-msg">
                                                 </p>
@@ -71,19 +77,18 @@
                                 <div class="register-end">
                                     <div class="input-div">
                                         <label for="password-register">Ingrese su Contraseña:</label>
-                                        <div class="password-set-register-div">
-                                            <h5 class="password-set-register"></h5>
-                                            <h5 class="password-let-register"></h5>
-                                            <h5 class="password-num-register"></h5>
-                                            <h5 class="password-cap-register"></h5>
+                                        <div class="set-password-div">
+                                            <h5 class="password-set-register error-set"></h5>
+                                            <h5 class="password-num-register error-set"></h5>
+                                            <h5 class="password-cap-register error-set"></h5>
+                                            <h5 class="password-let-register error-set"></h5>
                                         </div>
                                         <input class="controls-register" type="password" name="password" id="password-register" />
-                                            <p class="error-msg">
-                                            </p>
                                     </div>
 
                                     <div class="input-div">
                                         <label for="passwordConfirm">Confirme su Contraseña:</label>
+                                        <h5 id='passConfirm-set-register' class="error-set"></h5>
                                         <input class="controls-register" type="password" name="passwordConfirm-register"
                                             id="passwordConfirm-register" />
                                             <p class="error-msg">
@@ -107,82 +112,3 @@
     </body>
 
 </html>
-
-i want a function that check if a event.target.value has at leat one number, at leat one leter and at leat one capital leter
-with this outputs for example
-validatePassword('') => [false, 'let, num, cap']
-validatePassword('/*/*-/-*/-@') => [false, 'let, num, cap']
-validatePassword('32432') => [false, 'let, cap']
-validatePassword('DSF') => [false, 'let, num']
-validatePassword('dsfdsf') => [false, 'num, cap']
-validatePassword('fds765') => [false, 'cap']
-validatePassword('FDAfad') => [false, 'num']
-validatePassword('ASF234') => [false, 'let']
-validatePassword('AAsdas3') => [true, '']
-
-and i want this validation
-
-if this output [false, 'let, num, cap'] {
-                passwordLet.style.color = 'red';
-                passwordLet.textContent = 'Debe contener letras minusculas';
-                passwordNum.style.color = 'red';
-                passwordNum.textContent = `Debe contener numeros`;
-                passwordCap.style.color = 'red';
-                passwordCap.textContent = `Debe contener letras mayusculas`;
-}
-if this output [false, 'let, cap'] {
-                passwordLet.style.color = 'red';
-                passwordLet.textContent = 'Debe contener letras minusculas';
-                passwordNum.style.color = 'green';
-                passwordNum.textContent = `Debe contener numeros`;
-                passwordCap.style.color = 'red';
-                passwordCap.textContent = `Debe contener letras mayusculas`;
-}
-if this output [false, 'let, num'] {
-                passwordLet.style.color = 'red';
-                passwordLet.textContent = 'Debe contener letras minusculas';
-                passwordNum.style.color = 'red';
-                passwordNum.textContent = `Debe contener numeros`;
-                passwordCap.style.color = 'green';
-                passwordCap.textContent = `Debe contener letras mayusculas`;
-}
-if this output [false, 'num, cap'] {
-                passwordLet.style.color = 'green';
-                passwordLet.textContent = 'Debe contener letras minusculas';
-                passwordNum.style.color = 'red';
-                passwordNum.textContent = `Debe contener numeros`;
-                passwordCap.style.color = 'red';
-                passwordCap.textContent = `Debe contener letras mayusculas`;
-}
-if this output [false, 'cap'] {
-                passwordLet.style.color = 'green';
-                passwordLet.textContent = 'Debe contener letras minusculas';
-                passwordNum.style.color = 'green';
-                passwordNum.textContent = `Debe contener numeros`;
-                passwordCap.style.color = 'red';
-                passwordCap.textContent = `Debe contener letras mayusculas`;
-}
-if this output [false, 'num'] {
-                passwordLet.style.color = 'green';
-                passwordLet.textContent = 'Debe contener letras minusculas';
-                passwordNum.style.color = 'red';
-                passwordNum.textContent = `Debe contener numeros`;
-                passwordCap.style.color = 'green';
-                passwordCap.textContent = `Debe contener letras mayusculas`;
-}
-if this output [false, 'let'] {
-                passwordLet.style.color = 'red';
-                passwordLet.textContent = 'Debe contener letras minusculas';
-                passwordNum.style.color = 'green';
-                passwordNum.textContent = `Debe contener numeros`;
-                passwordCap.style.color = 'green';
-                passwordCap.textContent = `Debe contener letras mayusculas`;
-}
-if this output [true, '']{
-                 passwordLet.style.color = 'green';
-                passwordLet.textContent = 'Debe contener letras minusculas';
-                passwordNum.style.color = 'green';
-                passwordNum.textContent = `Debe contener numeros`;
-                passwordCap.style.color = 'green';
-
-}

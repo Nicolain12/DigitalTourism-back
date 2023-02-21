@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head') %>
+
+    <body>
+
+        <%- include('../../partials/header') %>
+
+            <main>
+                <form action="" method="POST" enctype="multipart/form-data" class="crate-flight">
+
+                    <div class="form-createFlight-top">
+                        <div class="form-createFlight-top-1">
+                            <input value="" type="file" id="input-flight-create" name="productFile" required>
+                            <label class="add-img-label-flight" for="input-flight-create">Ingrese una foto del producto:</label>
+                            <label for="input-flight-create"><i class="fa-solid fa-image"></i></label>
+                        </div>
+                        <div class="form-createFlight-top-2">
+                            
+                            <div class="form-createFlight-top-2-div">
+                                <div class="form-createFlight-inputDiv">
+                                    <label class="form-createFlight-label" for="airline">Aerolinea:</label>
+                                    <input value="" class="form-createFlight-input" type="text" id="airline" name="airline"
+                                        placeholder="Aerolinea">
+                                </div>
+                                <div class="form-createFlight-inputDiv">
+                                    <label class="form-createFlight-label" for="description">Descripcion:</label>
+                                    <input value="" class="form-createFlight-input" type="text" id="description" name="description"
+                                        placeholder="Descripcion">
+                                </div>
+                            </div>
+
+                            <div class="form-createFlight-top-2-div">
+                                <div class="form-createFlight-inputDiv">
+                                    <label class="form-createFlight-label" for="departure"><i class="fa-solid fa-plane-departure"></i></label>
+                                    <input value="" class="form-createFlight-input" type="text" id="departure" name="departure"
+                                        placeholder="Origen">
+                                </div>
+                                <div class="form-createFlight-inputDiv">
+                                    <label class="form-createFlight-label" for="reach"><i class="fa-solid fa-location-dot"></i></label>
+                                    <input value="" class="form-createFlight-input" type="text" id="reach" name="reach"
+                                        placeholder="Destino">
+                                </div>
+                            </div>
+
+                            <div class="form-createFlight-top-2-div">
+                                <div class="form-createFlight-inputDiv">
+                                    <label class="form-createFlight-label" for="departureDate">Fecha de ida</label>
+                                    <input value="" class="form-createFlight-input" type="date" id="departureDate" name="departureDate">
+                                </div>
+                                <div class="form-createFlight-inputDiv">
+                                    <label class="form-createFlight-label" for="reachDate">Fecha de vuelta</label>
+                                    <input value="" class="form-createFlight-input" type="date" id="reachDate" name="reachDate">
+                                </div>
+                            </div>
+
+                            <div class="form-createFlight-top-2-div">
+
+                                <div class="form-createFlight-inputDiv">
+                                    <label class="form-createFlight-label" for="departureHour">Hora de salida</label>
+                                    <input value="" class="form-createFlight-input" type="time" id="departureHour" name="departureHour">
+                                </div>
+                                <div class="form-createFlight-inputDiv">
+                                    <label class="form-createFlight-label" for="reachHour">Hora de llegada</label>
+                                    <input value="" class="form-createFlight-input" type="time" id="reachHour" name="reachHour">
+                                </div>
+
+                            </div>
+
+                            <div class="form-createFlight-top-2-div">
+
+                                <div class="form-createFlight-inputDiv">
+                                    <label class="form-createFlight-label" for="cabin.">Tipo de cabina:</label>
+                                    <select name="cabin" id="cabin">
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                    </select>
+                                </div>
+                                <div class="form-createFlight-inputDiv">
+                                    <label class="form-createFlight-label" for="price">Precio:</label>
+                                    <input value="" class="form-createFlight-input" type="number" id="price" name="price">
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-createFlight-bottom">
+                        <button class="mary" type="submit">Crear</button>
+                    </div>
+
+                </form>
+            </main>
+
+            <%- include('../../partials/footer') %>
+
+    </body>
+
+</html>

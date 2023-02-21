@@ -31,8 +31,8 @@ font-family: 'Roboto', sans-serif; (bold: 200, 400 y 600)
     margin-inline-end: 0px;
 }
 
-.password-set-register{
-    margin: 2% 0 0%;
+.error-set{
+    margin: 2% 0 1%;
     width: 100%;
     color: red;
 }

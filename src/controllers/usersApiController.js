@@ -93,7 +93,6 @@ module.exports = {
                 email: req.body.email,
                 password: req.body.password
             }
-            console.log(user);//CL
             const userInDb = await Users.findAll({
                 where: {
                     email: user.email
