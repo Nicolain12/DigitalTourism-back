@@ -101,6 +101,8 @@ window.onload = function () {
         const ageErrorRegister = document.querySelector('#age-set-register')
         // admin
         const adminErrorRegister = document.querySelector('#admin-set-register')
+        // main
+        const mainErrorRegister = document.querySelector('#main-error-register')
         // BUTTON
         const buttonRegister = document.querySelector('.botons-register')
 
@@ -115,6 +117,21 @@ window.onload = function () {
 
         const registerErrors = {}
         const registerData = {}
+
+
+
+        const file = userImgInput.files[0];
+
+        // userImgInput.addEventListener('change', (e) => )
+
+        // if (!file) {
+        // ERROR
+        // }
+
+        // if (!file.type.startsWith('image/')) {
+          // ERROR
+        // }
+        // ***************************************************************************
 
         passwordInput.addEventListener('keyup', (event) => {
             const inputValue = event.target.value
@@ -936,28 +953,49 @@ window.onload = function () {
         })
         // ***************************************************************************
         // ***************************************************************************
-        buttonRegister.addEventListener('click', (e) => {
+        buttonRegister.addEventListener('click', async (e) => {
             e.preventDefault()
-            console.log(registerErrors);
-            console.log(registerData);
-            //FINISH HERE
+            const errorsArray = Object.entries(registerErrors)
+            const registerDataArray = Object.entries(registerData)
+            const verificationCheck = {}
+
+            errorsArray.forEach((element, index) => {
+                console.log(`error ${index} : ${element[0]} - ${element[1]}`);
+                if (element[1] != 'correct') {
+                    verificationCheck.errors.element[0] = 'error'
+                }
+            })
+
+            if (verificationCheck.errors) {
+                // ERROR HERE
+            } else {
+                // *************FINISH*********************** 
+                const apiFetch = await fetch("/api/users/register", {
+                    method: "POST",
+                    body: JSON.stringify(registerData),
+                    headers: {
+                        Accept: "application/json", "Content-Type": "application/json"
+                    },
+                })
+                const resApi = await apiFetch.json()
+                if (resApi.info.status == 200) {
+                    delete resApi.data.password
+                    sessionStorage.setItem('userLogged', resApi.data)
+                    window.location.href = '/'
+                }
+                if (resApi.info.status == 400) {
+                    if (resApi.info.msg == 'The user is already on the database') {
+                        return mainErrorRegister.textContent = resApi.info.msg
+                    } else {
+                        return emailAlert.textContent = 'Informacion invalida'
+                    }
+                }
+                // *****************************************
+            }
+
         })
 
 
     }
 
 };
-
-//*****************************************************
-// if (!registerData.hasOwnProperty(/*KEY*/)) {
-//     Object.defineProperty(registerData, /*KEY*/, {
-//         value: /*VALUE*/,
-//         enumerable: true,
-//         writable: true,
-//         configurable: true,
-//     })
-// }
-// if (registerData.hasOwnProperty(/*KEY*/)) {
-//     registerData./*KEY*/ = /*VALUE*/
-// }
-//*****************************************************

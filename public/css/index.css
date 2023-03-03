@@ -31,6 +31,15 @@ font-family: 'Roboto', sans-serif; (bold: 200, 400 y 600)
     margin-inline-end: 0px;
 }
 
+.main-error-div{
+    width: 100%;
+    text-align: start;
+    padding-left: 2%;
+}
+#main-error-register{
+    margin: 0%;
+}
+
 .error-set{
     margin: 2% 0 1%;
     width: 100%;
@@ -622,9 +631,10 @@ footer {
     cursor: pointer;
     background: #1f53c5;
     height: 2rem;
+    border-radius: 5px;
     border: none;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .form-register .boton-register .botons-register:hover {
@@ -712,21 +722,31 @@ footer {
     text-decoration: none;
 }
 
+.button-loggin-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form-login a:hover {
     color: white;
     text-decoration: underline;
 }
 
 .form-login .botons {
-    width: 100%;
+    width: 50%;
     cursor: pointer;
     background: #1f53c5;
     border: none;
-    padding: 12px;
+    border-radius: 5px;
+    height: 2rem;
     color: white;
-    margin: 30px 0;
-    font-size: 16px;
+    margin: 3%;
+    font-size: 14px;
+    padding: 1%;
 }
+
 
 .form-login .botons:hover {
     box-shadow: 0 0 10px rgb(100, 100, 100);
