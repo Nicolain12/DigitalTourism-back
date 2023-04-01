@@ -39,10 +39,10 @@ app.use(session({ secret: 'Secret' }))
 
 
 // port
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`)
-    console.log('http://localhost:3000/')
+    console.log('http://localhost:3001')
 })
 
 //uses

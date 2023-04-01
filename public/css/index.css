@@ -1110,6 +1110,7 @@ footer {
 
 /****** EDITUSER END ******/
 /****** DELETECONFIRMUSER ******/
+
 .main-deleteConfirm {
     display: flex;
     flex-direction: column;

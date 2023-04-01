@@ -106,7 +106,9 @@ module.exports = {
                         res.cookie('userEmailCookie', user.email);
                     }
                     delete finded.password
+
                     req.session.userLogged = finded
+
                     response.data = finded
                     return res.json(response)
                 } else {
