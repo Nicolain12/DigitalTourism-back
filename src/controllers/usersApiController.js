@@ -58,7 +58,8 @@ module.exports = {
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10),
                 image: req.file ? req.file.filename : 'default.jpg',
-                admin: req.body.admin
+                admin: req.body.admin,
+                age: req.body.age
             }
             const isInDb = await Users.findAll({
                 where: {
