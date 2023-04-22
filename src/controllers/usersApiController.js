@@ -4,6 +4,7 @@
 const db = require('../database/models');
 const bcrypt = require('bcryptjs');
 const { on } = require('nodemon');
+const jwt = require('jsonwebtoken')
 const Users = db.User
 
 module.exports = {
@@ -103,13 +104,13 @@ module.exports = {
             if (userInDb.length > 0) {
                 let passwordCheck = bcrypt.compareSync(user.password, finded.password)
                 if (passwordCheck) {
-                    if(req.body.remember){
-                        res.cookie('userEmailCookie', user.email);
-                    }
+                    // if(req.body.remember){
+                    //     res.cookie('userEmailCookie', user.email);
+                    // }
                     delete finded.password
-
-                    req.session.userLogged = finded
-
+                    jwt.sign({finded}, 'secretkey', (err, token) => {
+                        response.info.token = token
+                    })
                     response.data = finded
                     return res.json(response)
                 } else {
