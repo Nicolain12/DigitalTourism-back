@@ -54,8 +54,8 @@ module.exports = {
         }
         try {
             const user = {
-                firstName: req.body.firstName,
-                lastName: req.body.secondName,
+                firstName: req.body.name,
+                lastName: req.body.surname,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10),
                 image: req.file ? req.file.filename : 'default.jpg',

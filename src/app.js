@@ -1,12 +1,10 @@
 const express = require('express')
 const path = require('path')
+const cors = require('cors');
 const app = express()
 
 //routes requires
-const indexRoutes = require('./routes/index.js')
-const usersRoutes = require('./routes/users.js')
 const usersApi = require('./routes/usersApi.js')
-const productsRoutes = require('./routes/products.js')
 const productsApi = require('./routes/productsApi.js')
 
 app.use(express.json())
@@ -21,13 +19,12 @@ app.use(express.static(publicPath))
 
 app.use(express.urlencoded({ extended: true }))
 
+//cors
+app.use(cors());
+
 //Cookie
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
-
-//ejs
-app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, '../views')) // Path "views"
 
 //session
 const session = require('express-session')
@@ -46,9 +43,6 @@ app.listen(PORT, () => {
 })
 
 //uses
-app.use('/', indexRoutes)
-app.use('/users', usersRoutes)
 app.use('/api/users', usersApi)
-app.use('/products', productsRoutes)
 app.use('/api/products', productsApi)
 
