@@ -104,20 +104,29 @@ module.exports = {
             if (userInDb.length > 0) {
                 let passwordCheck = bcrypt.compareSync(user.password, finded.password)
                 if (passwordCheck) {
-                    // if(req.body.remember){
-                    //     res.cookie('userEmailCookie', user.email);
-                    // }
-                    delete finded.password
-                    jwt.sign({finded}, 'secretkey', (err, token) => {
-                        response.info.token = token
-                    })
+                    if (req.body.remember) {
+                        delete finded.password
+                        // ***** JWT *****
+                        jwt.sign(
+                            { finded },
+                            'secretkey',
+                            { expiresIn: '30d' },
+                            (err, token) => {
+                                if (err) {
+                                    console.error(err);
+                                    return response.sendStatus(500);
+                                }
+                                response.info.token = token;
+                            }
+                        );
+                    }
                     response.data = finded
                     return res.json(response)
                 } else {
-                    return new Error('Contraseña invalida')
+                    return new Error('Invalid password')
                 }
             } else {
-                return new Error('Informacion invalida')
+                return new Error('Invalid information')
             }
         } catch (e) {
             response.info.status = 400
@@ -140,7 +149,7 @@ module.exports = {
                 image: req.file ? req.file.filename : 'default.jpg',
                 admin: req.body.admin
             }
-            const edited = await Users.update(newData, {where:{id: req.params.id}})
+            const edited = await Users.update(newData, { where: { id: req.params.id } })
             response.data = newData
             res.json(response)
 
@@ -151,7 +160,7 @@ module.exports = {
         }
 
     },
-    
+
     delete: async (req, res) => {
         let response = {
             info: {
@@ -161,21 +170,21 @@ module.exports = {
         try {
             const destroy = await Users.destroy({
                 where: {
-                  id: req.params.id
+                    id: req.params.id
                 }
-              })
-              response.data = destroy
-              res.json(response)
-  
+            })
+            response.data = destroy
+            res.json(response)
+
 
         } catch (e) {
             response.info.status = 400
             response.info.msg = e.message
             res.json(response)
         }
-        
+
     },
 
-    
+
 }
 
