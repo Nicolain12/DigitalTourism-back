@@ -74,6 +74,15 @@ module.exports = {
             } else {
                 const registedUser = await Users.create(user)
                 response.data = registedUser
+                delete registedUser.password
+                jwt.sign({ registedUser }, 'secretkey', { expiresIn: '1d' },(err, token) => {
+                    if (err) {
+                        console.error(err);
+                        return response.sendStatus(500);
+                    }
+                    response.info.token = token;
+                }
+            );
                 res.json(response)
             }
 
@@ -101,36 +110,49 @@ module.exports = {
                 }
             })
             const finded = userInDb[0].dataValues
-            if (userInDb.length > 0) {
+            if (finded) {
                 let passwordCheck = bcrypt.compareSync(user.password, finded.password)
                 if (passwordCheck) {
                     if (req.body.remember) {
                         delete finded.password
-                        // ***** JWT *****
-                        jwt.sign(
-                            { finded },
-                            'secretkey',
-                            { expiresIn: '30d' },
-                            (err, token) => {
-                                if (err) {
-                                    console.error(err);
-                                    return response.sendStatus(500);
+                            jwt.sign({ finded }, 'secretkey', { expiresIn: '30d' },(err, token) => {
+                                    if (err) {
+                                        console.error(err);
+                                        return response.sendStatus(500);
+                                    }
+                                    response.info.permanentToken = token;
+                                    response.data = finded
+                                    return res.json(response)
                                 }
-                                response.info.token = token;
-                            }
-                        );
+                            );
+                    } else {
+
+                        delete finded.password
+                            jwt.sign({ finded }, 'secretkey', { expiresIn: '1d' },(err, token) => {
+                                    if (err) {
+                                        console.error(err);
+                                        return response.sendStatus(500);
+                                    }
+                                    response.info.token = token;
+                                    response.data = finded
+                                    return res.json(response)
+                                }
+                            );
                     }
-                    response.data = finded
-                    return res.json(response)
                 } else {
-                    return new Error('Invalid password')
+                    response.info.status = 400
+                    response.info.msg = 'Invalid password'
+                    res.json(response)
                 }
             } else {
-                return new Error('Invalid information')
+            response.info.status = 400
+            response.info.msg = 'Invalid information'
+            res.json(response)
             }
         } catch (e) {
             response.info.status = 400
             response.info.msg = e.message
+            console.log(response);
             res.json(response)
         }
     },
