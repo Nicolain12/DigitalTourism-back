@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const usersAPI = require('../controllers/usersApiController')
 const path = require('path');
+const authorizationToken = require('../middlewares/authentication')
 
 //MULTER
 const multer = require('multer');
@@ -34,5 +35,10 @@ router.put('/update/:id', usersAPI.update)
 
 // Delete user
 router.delete('/delete/:id', usersAPI.delete)
+
+//**************************
+// Get User By Token
+router.get('/getByToken', authorizationToken, usersAPI.getByToken)
+//**************************
 
 module.exports = router

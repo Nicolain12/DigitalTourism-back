@@ -207,6 +207,10 @@ module.exports = {
 
     },
 
+    getByToken: async (req, res) => {
+        
+    }
+
 
 }
 
