@@ -75,14 +75,14 @@ module.exports = {
                 const registedUser = await Users.create(user)
                 response.data = registedUser
                 delete registedUser.password
-                jwt.sign({ registedUser }, 'secretkey', { expiresIn: '1d' },(err, token) => {
+                jwt.sign({ registedUser }, 'secretkey', { expiresIn: '1d' }, (err, token) => {
                     if (err) {
                         console.error(err);
                         return response.sendStatus(500);
                     }
                     response.info.token = token;
                 }
-            );
+                );
                 res.json(response)
             }
 
@@ -115,29 +115,29 @@ module.exports = {
                 if (passwordCheck) {
                     if (req.body.remember) {
                         delete finded.password
-                            jwt.sign({ finded }, 'secretkey', { expiresIn: '30d' },(err, token) => {
-                                    if (err) {
-                                        console.error(err);
-                                        return response.sendStatus(500);
-                                    }
-                                    response.info.permanentToken = token;
-                                    response.data = finded
-                                    return res.json(response)
-                                }
-                            );
+                        jwt.sign({ finded }, 'secretkey', { expiresIn: '30d' }, (err, token) => {
+                            if (err) {
+                                console.error(err);
+                                return response.sendStatus(500);
+                            }
+                            response.info.permanentToken = token;
+                            response.data = finded
+                            return res.json(response)
+                        }
+                        );
                     } else {
 
                         delete finded.password
-                            jwt.sign({ finded }, 'secretkey', { expiresIn: '1d' },(err, token) => {
-                                    if (err) {
-                                        console.error(err);
-                                        return response.sendStatus(500);
-                                    }
-                                    response.info.token = token;
-                                    response.data = finded
-                                    return res.json(response)
-                                }
-                            );
+                        jwt.sign({ finded }, 'secretkey', { expiresIn: '1d' }, (err, token) => {
+                            if (err) {
+                                console.error(err);
+                                return response.sendStatus(500);
+                            }
+                            response.info.token = token;
+                            response.data = finded
+                            return res.json(response)
+                        }
+                        );
                     }
                 } else {
                     response.info.status = 400
@@ -145,14 +145,13 @@ module.exports = {
                     res.json(response)
                 }
             } else {
-            response.info.status = 400
-            response.info.msg = 'Invalid information'
-            res.json(response)
+                response.info.status = 400
+                response.info.msg = 'Invalid information'
+                res.json(response)
             }
         } catch (e) {
             response.info.status = 400
             response.info.msg = e.message
-            console.log(response);
             res.json(response)
         }
     },
@@ -207,10 +206,20 @@ module.exports = {
 
     },
 
-    getByToken: async (req, res) => {
-        
+    getByToken: (req, res) => {
+        let response = {
+            info: {
+                status: 200
+            }
+        }
+        if(req.token){
+            response.data = req.token.finded
+            return res.json(response)
+        } else{
+            response.info.status = 400
+            response.info.msg = 'User not found'
+            return res.json(response)
+        }
+
     }
-
-
 }
-

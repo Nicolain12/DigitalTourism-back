@@ -38,7 +38,7 @@ router.delete('/delete/:id', usersAPI.delete)
 
 //**************************
 // Get User By Token
-router.get('/getByToken', authorizationToken, usersAPI.getByToken)
+router.get('/token/byId', authorizationToken, usersAPI.getByToken)
 //**************************
 
 module.exports = router
