@@ -170,6 +170,7 @@ module.exports = {
                 email: req.body.email,
                 image: req.file ? req.file.filename : 'default.jpg',
             }
+            console.log(req.file)
             await Users.update(newData, { where: { id: req.params.id } })
             const user = await Users.findByPk(req.params.id)
             response.data = user
