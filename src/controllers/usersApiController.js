@@ -79,9 +79,9 @@ module.exports = {
                         return response.sendStatus(500);
                     }
                     response.info.token = token;
+                    res.json(response)
                 }
                 );
-                res.json(response)
             }
 
         } catch (e) {
