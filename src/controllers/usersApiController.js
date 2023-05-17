@@ -1,6 +1,4 @@
-// const { fileLoader } = require('ejs');
-// const { application } = require('express');
-// const { Op } = require("sequelize");
+const fs = require('fs');
 const db = require('../database/models');
 const bcrypt = require('bcryptjs');
 const { on } = require('nodemon');
@@ -163,6 +161,7 @@ module.exports = {
             }
         }
         try {
+            console.log('req.file:');
             console.log(req.file);
             let newData = {
                 firstName: req.body.name,
@@ -170,7 +169,15 @@ module.exports = {
                 email: req.body.email,
                 image: req.file ? req.file.filename : 'default.jpg',
             }
-            console.log(req.file)
+            const previousUser = await Users.findByPk(req.params.id)
+            const previousImage = previousUser.dataValues.image
+            if(previousImage != 'default.jpg'){
+                    fs.unlink( `public/images/users/${previousImage}`, (err) => {
+                        if (err) {
+                          console.error(err);
+                        } 
+                      });
+            }
             await Users.update(newData, { where: { id: req.params.id } })
             const user = await Users.findByPk(req.params.id)
             response.data = user
