@@ -7,7 +7,7 @@ module.exports = {
       'Users', // table name
       'age', // new column name
       {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DATEONLY,
         allowNull: true
       }
     );

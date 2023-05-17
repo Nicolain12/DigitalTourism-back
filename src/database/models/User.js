@@ -10,38 +10,42 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-          //conection with ticket db 
-          User.hasMany(models.Ticket, {
-            as: "tickets",
-            foreignKey: "user_id"
-        })
+      //conection with ticket db 
+      User.hasMany(models.Ticket, {
+        as: "tickets",
+        foreignKey: "user_id"
+      })
     }
   }
   User.init({
-    firstName:{
+    firstName: {
       type: DataTypes.STRING,
-      allowNull:false
-    }, 
+      allowNull: false
+    },
     lastName: {
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull: false
     },
     password: {
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull: false
     },
     image: {
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull: false
     },
     admin: {
       type: DataTypes.BOOLEAN,
-      allowNull:false
+      allowNull: false
     },
+    age: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    }
   }, {
     tableName: 'users',
     sequelize,

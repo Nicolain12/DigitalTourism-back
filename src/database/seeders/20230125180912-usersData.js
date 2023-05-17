@@ -9,30 +9,17 @@ module.exports = {
       email: 'john@doe.com',
       password: '123',
       image: 'default.jpg',
+      age: '2000-03-04',
       createdAt: new Date(),
       updatedAt: new Date()
-    },{
-      firstName: 'Nicolas',
-      lastName: 'Lain',
-      email: 'nico@mail.com',
-      password: '456',
-      image: 'default.jpg',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      firstName: 'Victoria',
-      lastName: 'Valbuena',
-      email: 'vicky@mail.com',
-      password: '789',
-      image: 'default.jpg',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
+    },
+    {
       firstName: 'Lionel',
       lastName: 'Messi',
       email: 'messi@campeon.com',
       password: '321',
       image: 'default.jpg',
+      age: '1987-24-06',
       createdAt: new Date(),
       updatedAt: new Date()
     }]);          
