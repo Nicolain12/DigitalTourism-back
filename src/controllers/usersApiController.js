@@ -161,22 +161,22 @@ module.exports = {
             }
         }
         try {
-            console.log('req.file:');
-            console.log(req.file);
             let newData = {
                 firstName: req.body.name,
                 lastName: req.body.surname,
                 email: req.body.email,
-                image: req.file ? req.file.filename : 'default.jpg',
             }
-            const previousUser = await Users.findByPk(req.params.id)
-            const previousImage = previousUser.dataValues.image
-            if(previousImage != 'default.jpg'){
-                    fs.unlink( `public/images/users/${previousImage}`, (err) => {
+            if (req.file != undefined) newData.image = req.file.filename
+            if (newData.image) {
+                const previousUser = await Users.findByPk(req.params.id)
+                const previousImage = previousUser.dataValues.image
+                if (previousImage != 'default.jpg') {
+                    fs.unlink(`public/images/users/${previousImage}`, (err) => {
                         if (err) {
-                          console.error(err);
-                        } 
-                      });
+                            console.error(err);
+                        }
+                    });
+                }
             }
             await Users.update(newData, { where: { id: req.params.id } })
             const user = await Users.findByPk(req.params.id)
