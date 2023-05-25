@@ -2,13 +2,10 @@ const { application } = require('express');
 const { EmptyResultError } = require('sequelize');
 const db = require('../database/models');
 const { update } = require('./usersApiController');
-// const { Op } = require("sequelize");
 const Flight = db.Flight
 const Package = db.Package
 const Hotel = db.Hotel
-// const Flights_tickets = db.Flights_tickets
-// const Packages_tickets = db.Packages_tickets
-// const Hotels_tickets = db.Hotels_tickets
+
 
 
 module.exports = {
@@ -20,20 +17,22 @@ module.exports = {
             }
         }
         try {
+            console.log(req.token.finded.id);
             const newFlight = {
-                image: req.file ? req.file.filename : 'logo2.jpg',
+                image: req.files,
                 airline: req.body.airline,
                 departure: req.body.departure,
                 reach: req.body.reach,
                 description: req.body.description,
-                departure_date: req.body.departure_date,
-                reach_date: req.body.reach_date,
-                departure_hour: req.body.departure_hour,
-                reach_hour: req.body.reach_hour,
+                departure_date: req.body.departureDate,
+                reach_date: req.body.reachDate,
+                departure_hour: req.body.departureHour,
+                reach_hour: req.body.reachHour,
                 cabin: req.body.cabin,
                 price: req.body.price,
+                user_id: req.token.finded.id
             }
-
+            console.log(newFlight);
             const addingFlight = await Flight.create(newFlight)
 
             response.data = addingFlight
