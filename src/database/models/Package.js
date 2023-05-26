@@ -37,7 +37,8 @@ module.exports = (sequelize, DataTypes) => {
     flight_id: DataTypes.INTEGER,
     hotel_id: DataTypes.INTEGER,
     price: DataTypes.BIGINT,
-    discount: DataTypes.BIGINT
+    discount: DataTypes.BIGINT,
+    user_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Package',

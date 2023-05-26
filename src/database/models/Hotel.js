@@ -31,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     spot: DataTypes.STRING,
     service: DataTypes.INTEGER,
     description: DataTypes.STRING,
-    price: DataTypes.BIGINT
+    price: DataTypes.BIGINT,
+    user_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Hotel',

@@ -17,9 +17,8 @@ module.exports = {
             }
         }
         try {
-            console.log(req.token.finded.id);
             const newFlight = {
-                image: req.files,
+                image: req.files.map((file) => file.path),
                 airline: req.body.airline,
                 departure: req.body.departure,
                 reach: req.body.reach,

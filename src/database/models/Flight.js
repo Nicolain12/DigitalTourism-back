@@ -10,13 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // ****** conection with ticket db ******
-      // Flight.belongsToMany(models.Ticket, {
-      //   as: 'tickets',
-      //   through: 'flights_tickets',
-      //   foreignKey: 'flight_id',
-      //   otherKey: 'ticket_id',
-      // })
+      Flight.belongsTo(models.User, {
+        foreignKey: 'user_id',
+        as: 'user',
+      });
 
       Flight.hasMany(models.Flights_tickets,{
         as: 'tickets',
@@ -31,17 +28,54 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Flight.init({
-    image: DataTypes.STRING,
-    airline: DataTypes.STRING,
-    departure: DataTypes.STRING,
-    reach: DataTypes.STRING,
-    description: DataTypes.STRING,
-    departure_date: DataTypes.DATEONLY,
-    reach_date: DataTypes.DATEONLY,
-    departure_hour: DataTypes.TIME,
-    reach_hour: DataTypes.TIME,
-    cabin: DataTypes.STRING,
-    price: DataTypes.BIGINT
+    image: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
+    },
+    airline:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    departure:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    reach:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    departure_date:{
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    reach_date:{
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    departure_hour:{
+      type: DataTypes.TIME,
+      allowNull: false
+    },
+    reach_hour:{
+      type: DataTypes.TIME,
+      allowNull: false
+    },
+    cabin:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    price:{
+      type: DataTypes.BIGINT,
+      allowNull: false
+    },
+    user_id:{
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
   }, {
     sequelize,
     modelName: 'Flight',
