@@ -18,7 +18,7 @@ module.exports = {
         }
         try {
             const newFlight = {
-                image: req.files.map((file) => file.path),
+                image: req.files.map((file) => file.filename),
                 airline: req.body.airline,
                 departure: req.body.departure,
                 reach: req.body.reach,
