@@ -31,7 +31,6 @@ module.exports = {
                 price: req.body.price,
                 user_id: req.token.finded.id
             }
-            console.log(newFlight);
             const addingFlight = await Flight.create(newFlight)
 
             response.data = addingFlight
