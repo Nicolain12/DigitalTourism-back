@@ -43,7 +43,6 @@ module.exports = {
         }
 
     },
-
     createHotels: async (req, res) => {
         let response = {
             info: {
@@ -72,7 +71,6 @@ module.exports = {
         }
 
     },
-
     createPackages: async (req, res) => {
         let response = {
             info: {
@@ -150,7 +148,6 @@ module.exports = {
         }
 
     },
-
     listFlights: async (req, res) => {
         let response = {
             info: {
@@ -169,7 +166,6 @@ module.exports = {
             res.json(response)
         }
     },
-
     listHotels: async (req, res) => {
         let response = {
             info: {
@@ -305,7 +301,6 @@ module.exports = {
             res.json(response)
         }
     },
-
     updateHotels: async (req, res) => {
         let response = {
             info: {
@@ -339,7 +334,6 @@ module.exports = {
         }
 
     },
-
     updatePackages: async (req, res) => {
         let response = {
             info: {
@@ -437,7 +431,6 @@ module.exports = {
             res.json(response)
         }
     },
-
     deleteHotel: async (req, res) => {
         let response = {
             info: {
@@ -470,7 +463,6 @@ module.exports = {
             res.json(response)
         }
     },
-
     deletePackage: async (req, res) => {
         let response = {
             info: {

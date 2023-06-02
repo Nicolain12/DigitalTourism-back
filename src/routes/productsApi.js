@@ -26,7 +26,7 @@ const upload = multer({ storage: storage });
 
 
 // Create flights
-router.post('/create/flight',authorization, upload.array('productFile'), productsAPI.createFlights)
+router.post('/create/flight', authorization, upload.array('productFile'), productsAPI.createFlights)
 
 // Create hotels
 router.post('/create/hotel', productsAPI.createHotels)
@@ -44,7 +44,7 @@ router.get('/flights', productsAPI.listFlights)
 router.get('/hotels', productsAPI.listHotels)
 
 // Find flight by pk
-router.get('/flight/:id', productsAPI.flightByPk)
+router.get('/flight/:id', authorization, productsAPI.flightByPk)
 
 // Find hotel by pk
 router.get('/hotel/:id', productsAPI.hotelByPk)
