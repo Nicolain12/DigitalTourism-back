@@ -8,10 +8,10 @@ const path = require('path');
 const fs = require('fs');
 
 //MULTER
-
-const storage = multer.diskStorage({
+//flight
+const storageFlight = multer.diskStorage({
   destination: function (req, file, cb) {
-    const userId = req.token.finded.id; 
+    const userId = req.token.finded.id;  
     const folder = path.join(__dirname, `../../public/images/flights/product_${userId}`);
     fs.mkdirSync(folder, { recursive: true }); 
     cb(null, folder);
@@ -21,15 +21,28 @@ const storage = multer.diskStorage({
     cb(null, imageName);
   }
 });
-
-const upload = multer({ storage: storage });
+const uploadFlight = multer({ storage: storageFlight });
+//hotel
+const storageHotel = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const userId = req.token.finded.id; 
+    const folder = path.join(__dirname, `../../public/images/hotels/product_${userId}`);
+    fs.mkdirSync(folder, { recursive: true }); 
+    cb(null, folder);
+  },
+  filename: function (req, file, cb) {
+    const imageName = 'products-' + Date.now() + path.extname(file.originalname);
+    cb(null, imageName);
+  }
+});
+const uploadHotel = multer({ storage: storageHotel });
 
 
 // Create flights
-router.post('/create/flight', authorization, upload.array('productFile'), productsAPI.createFlights)
+router.post('/create/flight', authorization, uploadFlight.array('productFile'), productsAPI.createFlights)
 
 // Create hotels
-router.post('/create/hotel', productsAPI.createHotels)
+router.post('/create/hotel', authorization, uploadHotel.array('productFile'), productsAPI.createHotels)
 
 // Create packages
 router.post('/create/package', productsAPI.createPackages)

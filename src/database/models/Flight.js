@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       Flight.hasMany(models.Package, {
         as: "packages",
         foreignKey: "flight_id"
-      })
+      }) 
     }
   }
   Flight.init({

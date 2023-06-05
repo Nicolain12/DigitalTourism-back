@@ -51,12 +51,13 @@ module.exports = {
         }
         try {
             const newHotel = {
-                image: req.file ? req.file.filename : 'logo2.jpg',
+                image: req.files.map((file) => file.filename),
                 name: req.body.name,
                 spot: req.body.spot,
                 service: req.body.service,
                 description: req.body.description,
-                price: req.body.price
+                price: req.body.price,
+                user_id: req.token.finded.id
             }
 
             const addingHotel = await Hotel.create(newHotel)

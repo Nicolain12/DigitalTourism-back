@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      Hotel.belongsTo(models.User, {
+        foreignKey: 'user_id',
+        as: 'user',
+      });
       // conection with ticket db
       Hotel.belongsToMany(models.Ticket, {
         as: 'hotels',
@@ -18,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: 'hotel_id',
       })
 
-      //conection with package db
+      //conection with package db 
       Hotel.hasMany(models.Package, {
         as: "packages",
         foreignKey: "hotel_id"
@@ -26,13 +30,34 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Hotel.init({
-    image: DataTypes.STRING,
-    name: DataTypes.STRING,
-    spot: DataTypes.STRING,
-    service: DataTypes.INTEGER,
-    description: DataTypes.STRING,
-    price: DataTypes.BIGINT,
-    user_id: DataTypes.INTEGER
+    image:{
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    spot: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    service: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    description:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    price: {
+      type: DataTypes.BIGINT,
+      allowNull: false
+    },
+    user_id:{
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
   }, {
     sequelize,
     modelName: 'Hotel',
