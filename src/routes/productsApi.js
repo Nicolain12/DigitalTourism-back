@@ -37,7 +37,6 @@ const storageHotel = multer.diskStorage({
 });
 const uploadHotel = multer({ storage: storageHotel });
 
-
 // Create flights
 router.post('/create/flight', authorization, uploadFlight.array('productFile'), productsAPI.createFlights)
 
@@ -45,7 +44,7 @@ router.post('/create/flight', authorization, uploadFlight.array('productFile'), 
 router.post('/create/hotel', authorization, uploadHotel.array('productFile'), productsAPI.createHotels)
 
 // Create packages
-router.post('/create/package', productsAPI.createPackages)
+router.post('/create/package', authorization, uploadFlight.array('productFileF'), uploadHotel.array('productFileH'), productsAPI.createPackages)
 
 // List of packages
 router.get('/packages', productsAPI.listPackages)
@@ -60,7 +59,7 @@ router.get('/hotels', productsAPI.listHotels)
 router.get('/flight/:id', authorization, productsAPI.flightByPk)
 
 // Find hotel by pk
-router.get('/hotel/:id', productsAPI.hotelByPk)
+router.get('/hotel/:id', authorization, productsAPI.hotelByPk)
 
 // Find package by pk
 router.get('/package/:id', productsAPI.packageByPk)

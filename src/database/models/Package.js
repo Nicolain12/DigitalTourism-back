@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      Package.belongsTo(models.User, {
+        foreignKey: 'user_id',
+        as: 'user',
+      });
       //conection with ticket db
       Package.belongsToMany(models.Ticket, {
         as: 'tickets',
@@ -34,11 +38,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Package.init({
-    flight_id: DataTypes.INTEGER,
-    hotel_id: DataTypes.INTEGER,
-    price: DataTypes.BIGINT,
-    discount: DataTypes.BIGINT,
-    user_id: DataTypes.INTEGER
+    flight_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    hotel_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    price: {
+      type: DataTypes.BIGINT,
+      allowNull: false
+    },
+    discount: {
+      type: DataTypes.BIGINT,
+      allowNull: false
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
   }, {
     sequelize,
     modelName: 'Package',

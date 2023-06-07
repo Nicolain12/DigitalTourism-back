@@ -81,7 +81,7 @@ module.exports = {
         try {
             // Both has description, price and image so it will has an initial (F or H) in order to reference each of them
             const newFlight = {
-                image: req.file ? req.file.filename : 'logo2.jpg',
+                image: req.file ? req.file.filename : 'logo2.jpg',//***************************************/
                 airline: req.body.airline,
                 departure: req.body.departure,
                 reach: req.body.reach,
@@ -94,7 +94,7 @@ module.exports = {
                 price: req.body.priceF,
             }
             const newHotel = {
-                image: req.file ? req.file.filename : 'logo2.jpg',
+                image: req.file ? req.file.filename : 'logo2.jpg',//***************************************/
                 name: req.body.name,
                 spot: req.body.spot,
                 service: req.body.service,
