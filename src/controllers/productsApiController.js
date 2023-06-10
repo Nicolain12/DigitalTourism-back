@@ -79,43 +79,24 @@ module.exports = {
             }
         }
         try {
-            // Both has description, price and image so it will has an initial (F or H) in order to reference each of them
-            const newFlight = {
-                image: req.file ? req.file.filename : 'logo2.jpg',//***************************************/
-                airline: req.body.airline,
-                departure: req.body.departure,
-                reach: req.body.reach,
-                description: req.body.descriptionF,
-                departure_date: req.body.departure_date,
-                reach_date: req.body.reach_date,
-                departure_hour: req.body.departure_hour,
-                reach_hour: req.body.reach_hour,
-                cabin: req.body.cabin,
-                price: req.body.priceF,
-            }
-            const newHotel = {
-                image: req.file ? req.file.filename : 'logo2.jpg',//***************************************/
-                name: req.body.name,
-                spot: req.body.spot,
-                service: req.body.service,
-                description: req.body.descriptionH,
-                price: req.body.priceH
-            }
-            const addingFlight = await Flight.create(newFlight)
-            const addingHotel = await Hotel.create(newHotel)
-            const priceHotel = addingHotel.dataValues.price * (Math.floor(((new Date(addingFlight.dataValues.reach_date) - new Date(addingFlight.dataValues.departure_date)) / (1000 * 60 * 60 * 24))))
-            const discountCalculator = (addingFlight.dataValues.price + priceHotel) - (((addingFlight.dataValues.price + priceHotel) * req.body.discount) / 100)
+            const flightPrice = req.body.priceF
+            const departureDate = req.body.departureDate
+            const reachDate = req.body.reachDate
+            const hotelPrice = req.body.priceH
+            const priceHotel = hotelPrice * (Math.floor(((new Date(reachDate) - new Date(departureDate)) / (1000 * 60 * 60 * 24))))
+            const discountCalculator = (flightPrice + priceHotel) - (((flightPrice + priceHotel) * req.body.discount) / 100)
             const newPackage = {
-                flight_id: addingFlight.dataValues.id,
-                hotel_id: addingHotel.dataValues.id,
+                flight_id: req.body.flight_id,
+                hotel_id: req.body.hotel_id,
                 price: discountCalculator,
-                discount: req.body.discount
+                discount: req.body.discount,
+                user_id: req.token.finded.id
             }
             const addingPackages = await Package.create(newPackage)
             response.data = {
                 package: addingPackages,
-                flight: addingFlight,
-                hotel: addingHotel
+                flight_id: req.body.flight_id,
+                hotel_id: req.body.hotel_id
             }
             res.json(response)
         }
