@@ -8,6 +8,19 @@ const path = require('path');
 const fs = require('fs');
 
 //MULTER
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const userId = req.token.finded.id;  
+    const folder = path.join(__dirname, `../../public/images/flights/product_${userId}`);
+    fs.mkdirSync(folder, { recursive: true }); 
+    cb(null, folder);
+  },
+  filename: function (req, file, cb) {
+    const imageName = 'products-' + Date.now() + path.extname(file.originalname);
+    cb(null, imageName);
+  }
+});
+const upload = multer({ storage: storage });
 //flight
 const storageFlight = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -44,7 +57,7 @@ router.post('/create/flight', authorization, uploadFlight.array('productFile'), 
 router.post('/create/hotel', authorization, uploadHotel.array('productFile'), productsAPI.createHotels)
 
 // Create packages
-router.post('/create/package', authorization, uploadFlight.array('productFileF'), uploadHotel.array('productFileH'), productsAPI.createPackages)
+router.post('/create/package', authorization, upload.none(), productsAPI.createPackages)
 
 // List of packages
 router.get('/packages', productsAPI.listPackages)
