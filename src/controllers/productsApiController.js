@@ -1,7 +1,7 @@
-const { application } = require('express');
-const { EmptyResultError } = require('sequelize');
-const db = require('../database/models');
-const { update } = require('./usersApiController');
+const { application } = require('express')
+const { EmptyResultError } = require('sequelize')
+const db = require('../database/models')
+const { update } = require('./usersApiController')
 const Flight = db.Flight
 const Package = db.Package
 const Hotel = db.Hotel
@@ -79,16 +79,33 @@ module.exports = {
             }
         }
         try {
-            const flightPrice = req.body.priceF
-            const departureDate = req.body.departureDate
-            const reachDate = req.body.reachDate
-            const hotelPrice = req.body.priceH
-            const priceHotel = hotelPrice * (Math.floor(((new Date(reachDate) - new Date(departureDate)) / (1000 * 60 * 60 * 24))))
-            const discountCalculator = (flightPrice + priceHotel) - (((flightPrice + priceHotel) * req.body.discount) / 100)
+            const flightPrice = parseFloat(req.body.priceF)
+            const departureDate = new Date(req.body.departureDate)
+            const reachDate = new Date(req.body.reachDate)
+            const hotelPrice = parseFloat(req.body.priceH)
+            const discountPercentage = parseFloat(req.body.discount)
+            
+            if (
+              isNaN(flightPrice) ||
+              isNaN(hotelPrice) ||
+              isNaN(discountPercentage) ||
+              !departureDate ||
+              !reachDate
+            ) {
+                return new Error('Invalid input data')
+            }
+            
+            const millisecondsPerDay = 24 * 60 * 60 * 1000
+            const numberOfDays = Math.floor((reachDate - departureDate) / millisecondsPerDay)     
+            const priceHotel = hotelPrice * numberOfDays
+            const totalPrice = flightPrice + priceHotel
+            const discountAmount = (totalPrice * discountPercentage) / 100
+            const discountedPrice = totalPrice - discountAmount 
+            
             const newPackage = {
                 flight_id: req.body.flight_id,
                 hotel_id: req.body.hotel_id,
-                price: discountCalculator,
+                price: discountedPrice,
                 discount: req.body.discount,
                 user_id: req.token.finded.id
             }
