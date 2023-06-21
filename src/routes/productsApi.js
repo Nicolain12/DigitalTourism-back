@@ -84,7 +84,7 @@ router.put('/update/flight/:id', authorization, uploadFlight.array('productFile'
 router.put('/update/hotel/:id', authorization, uploadHotel.array('productFile'), productsAPI.updateHotels)
 
 // Update packages
-router.put('/update/package/:id', productsAPI.updatePackages)  
+router.put('/update/package/:id', authorization, upload.none(), productsAPI.updatePackages)  
 
 // Delete flights
 router.delete('/delete/flight/:id', productsAPI.deleteFlight)

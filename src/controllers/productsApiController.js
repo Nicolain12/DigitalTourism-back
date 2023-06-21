@@ -271,9 +271,6 @@ module.exports = {
             }
         }
         try {
-            const isPackage = await Package.findAll()
-            const isIn = isPackage.find(element => element.dataValues.flight_id == req.params.id)
-            if (!isIn) {
                 const oldImgs = req.body.oldImages
                 const rmvImgs = req.body.removeImages
                 const newFlight = {
@@ -333,12 +330,8 @@ module.exports = {
                 }
                 const edited = await Flight.update(newFlight, { where: { id: req.params.id } })
                 response.data = newFlight
+                console.log(newFlight);
                 res.json(response)
-            } else {
-                response.info.msg = `In order to update this flight you must do it in the package ---> http://localhost:3000/api/products/update/package/${isIn.dataValues.id}`
-                response.info.package_id = isIn.dataValues.id
-                res.json(response)
-            }
         }
         catch (e) {
             response.info.status = 400
@@ -355,7 +348,6 @@ module.exports = {
         try {
             const isPackage = await Package.findAll()
             const isIn = isPackage.find(element => element.dataValues.hotel_id == req.params.id)
-            if (!isIn) {
                 const oldImgs = req.body.oldImages
                 const rmvImgs = req.body.removeImages
                 const newHotelInfo = {
@@ -365,7 +357,6 @@ module.exports = {
                     description: req.body.description,
                     price: req.body.price
                 }
-                //-----------------------------------------------------------------
                 if (oldImgs) {
                     const newHotelImg = []
                     if (typeof oldImgs === 'object') {
@@ -409,15 +400,9 @@ module.exports = {
                         });
                     }
                 }
-                //-----------------------------------------------------------------
                 const edited = await Hotel.update(newHotelInfo, { where: { id: req.params.id } })
                 response.data = newHotelInfo
                 res.json(response)
-            } else {
-                response.info.msg = `In order to update this hotel you must do it in the package ---> http://localhost:3000/api/products/update/package/${isIn.dataValues.id}`
-                response.info.package_id = isIn.dataValues.id
-                res.json(response)
-            }
         }
         catch (e) {
             response.info.status = 400
@@ -434,45 +419,38 @@ module.exports = {
         }
         try {
             // Both has description, price and image so it will has an initial (F or H) in order to reference each of them
-            const newFlight = {
-                image: req.file ? req.file.filename : 'logo2.jpg',
-                airline: req.body.airline,
-                departure: req.body.departure,
-                reach: req.body.reach,
-                description: req.body.descriptionF,
-                departure_date: req.body.departure_date,
-                reach_date: req.body.reach_date,
-                departure_hour: req.body.departure_hour,
-                reach_hour: req.body.reach_hour,
-                cabin: req.body.cabin,
-                price: req.body.priceF,
+            const flightPrice = parseFloat(req.body.priceF)
+            const departureDate = new Date(req.body.departureDate)
+            const reachDate = new Date(req.body.reachDate)
+            const hotelPrice = parseFloat(req.body.priceH)
+            const discountPercentage = parseFloat(req.body.discount)
+
+            if (isNaN(flightPrice) || isNaN(hotelPrice) || isNaN(discountPercentage) || !departureDate || !reachDate) {
+                return new Error('Invalid input data')
             }
-            const newHotel = {
-                image: req.file ? req.file.filename : 'logo2.jpg',
-                name: req.body.name,
-                spot: req.body.spot,
-                service: req.body.service,
-                description: req.body.descriptionH,
-                price: req.body.priceH
-            }
+           
             const packageToEdit = await Package.findByPk(req.params.id)
             const pack = packageToEdit.dataValues
             if (pack) {
-                const updatePackageFlight = await Flight.update(newFlight, { where: { id: pack.flight_id } })
-                const updatePackageHotel = await Hotel.update(newHotel, { where: { id: pack.hotel_id } })
-                const priceHotel = newHotel.price * (Math.floor(((new Date(newFlight.reach_date) - new Date(newFlight.departure_date)) / (1000 * 60 * 60 * 24))))
-                const discountCalculator = (newFlight.price + priceHotel) - (((newFlight.price + priceHotel) * req.body.discount) / 100)
-                const newPack = {
-                    flight_id: newFlight.id,
-                    hotel_id: newHotel.id,
-                    price: discountCalculator,
-                    discount: req.body.discount
-                }
+                const millisecondsPerDay = 24 * 60 * 60 * 1000
+            const numberOfDays = Math.floor((reachDate - departureDate) / millisecondsPerDay)
+            const priceHotel = hotelPrice * numberOfDays
+            const totalPrice = flightPrice + priceHotel
+            const discountAmount = (totalPrice * discountPercentage) / 100
+            const discountedPrice = totalPrice - discountAmount
+
+            const newPack = {
+                flight_id: req.body.flight_id,
+                hotel_id: req.body.hotel_id,
+                price: discountedPrice,
+                discount: req.body.discount,
+                user_id: req.token.finded.id
+            }
                 const updatePack = await Package.update(newPack, { where: { id: req.params.id } })
                 response.data = {
                     package: newPack,
-                    flight: newFlight,
-                    hotel: newHotel
+                    flight: req.body.flight_id,
+                    hotel: req.body.hotel_id
                 }
                 res.json(response)
 
