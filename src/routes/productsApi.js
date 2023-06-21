@@ -78,10 +78,10 @@ router.get('/hotel/:id', authorization, productsAPI.hotelByPk)
 router.get('/package/:id', productsAPI.packageByPk)
 
 // Update flights
-router.put('/update/flight/:id', productsAPI.updateFlights)
+router.put('/update/flight/:id', authorization, uploadFlight.array('productFile'), productsAPI.updateFlights)
 
 // Update flights
-router.put('/update/hotel/:id', productsAPI.updateHotels)
+router.put('/update/hotel/:id', authorization, uploadHotel.array('productFile'), productsAPI.updateHotels)
 
 // Update packages
 router.put('/update/package/:id', productsAPI.updatePackages)  
