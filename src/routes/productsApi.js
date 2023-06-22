@@ -87,12 +87,12 @@ router.put('/update/hotel/:id', authorization, uploadHotel.array('productFile'),
 router.put('/update/package/:id', authorization, upload.none(), productsAPI.updatePackages)  
 
 // Delete flights
-router.delete('/delete/flight/:id', productsAPI.deleteFlight)
+router.delete('/delete/flight/:id', authorization, productsAPI.deleteFlight)
 
 // Delete hotels
-router.delete('/delete/hotel/:id', productsAPI.deleteHotel)
+router.delete('/delete/hotel/:id', authorization, productsAPI.deleteHotel)
 
 // Delete package
-router.delete('/delete/package/:id', productsAPI.deletePackage)
+router.delete('/delete/package/:id', authorization, productsAPI.deletePackage)
 
 module.exports = router

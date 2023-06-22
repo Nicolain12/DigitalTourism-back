@@ -199,6 +199,7 @@ module.exports = {
             if (isPack) {
                 const finded = await Flight.findByPk(req.params.id)
                 response.info.isOnSale = `http://localhost:3000/api/products/package/${isPack.id}`
+                response.info.packId = isPack.id
                 response.data = finded
                 res.json(response)
             } else {
@@ -224,6 +225,7 @@ module.exports = {
             if (isPack) {
                 const finded = await Hotel.findByPk(req.params.id)
                 response.info.isOnSale = `http://localhost:3000/api/products/package/${isPack.id}`
+                response.info.packId = isPack.id
                 response.data = finded
                 res.json(response)
             } else {
