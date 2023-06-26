@@ -4,22 +4,21 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [{
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john@doe.com',
-      password: 'Johndoe1@',
+      firstName: 'Nicolas',
+      lastName: 'Lain',
+      email: 'nicolas@mail.com ',
+      password: '$2a$10$2Q4jJKJnTT4bxjCPuYuYbOz7hVQzWe/.tJY9fY4EcqIbpaGURExqu',
       image: 'default.jpg',
-      age: '2000-03-04',
+      age: '2002-10-12',
       createdAt: new Date(),
       updatedAt: new Date()
-    },
-    {
-      firstName: 'Lionel',
-      lastName: 'Messi',
-      email: 'messi@campeon.com',
-      password: 'Liomessi1@',
+    },{
+      firstName: 'React',
+      lastName: 'Test',
+      email: 'react@test.com',
+      password: '$2a$10$H8VnhEq2F07ayCGBOZhu2uTOSH6WcarPJ22gaKhAqOPig4YyBK8bu',
       image: 'default.jpg',
-      age: '1987-24-06',
+      age: '2002-10-12',
       createdAt: new Date(),
       updatedAt: new Date()
     }]);          

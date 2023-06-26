@@ -4,39 +4,43 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Hotels', [{
-      image: '058889-saopaulo.jpg',
-      name: 'Brigadeiro resort',
-      spot: 'Sao Paulo',
+      image: ["products-1687547747761.jpeg","products-1687547747777.jpeg","products-1687547747778.jpeg"],
+      name: 'Sunset resort',
+      spot: 'Venezuela',
       service: 4,
-      description: 'El resort cuenta con desayuno incluido, pileta y salida a la playa. Tambien cuenta con entretenimiento privado, discotecas, conciertos y restaurantes',
-      price: 250,
+      description: 'The ressort is located on margarita island and is all inclusive type. It also has private entretaiment and events',
+      price: 200,
+      user_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      image: '323243-jamaica.webp',
-      name: 'Free hotel',
-      spot: 'Jamaica',
-      service: 5,
-      description: 'El hotel cuenta con una pileta con increibles vistas, restaurantes, entretenimiento privado y desayuno incluido',
-      price: 350,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      image: '1528494-lasvegas.jpg',
-      name: 'La Victoria',
-      spot: 'Las vegas',
-      service: 4,
-      description: 'La estadia incluye el desayuno, tiene un bingo semanal privado y se encuentra frente a uno de los mejores casinos de la zona',
-      price: 300,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      image: '159222787-orlando.jpg',
-      name: 'Sunset hotel',
-      spot: 'Orlando',
+      image: ["products-1687547965103.jpeg","products-1687547965105.jpeg","products-1687547965108.png"],
+      name: 'Sakura hotel',
+      spot: 'Japan',
       service: 3,
-      description: 'El hotel no incluye desyuno pero cuenta con un restaurante y bar privado. Tambien cuenta con una pileta interna climatizada',
-      price: 170,
+      description: 'The hotel is located on the outskirts of tokyo which is the capital of the country',
+      price: 130,
+      user_id: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      image: ["products-1687548436421.jpg","products-1687548436421.jpg","products-1687548436421.jpg"],
+      name: 'Yarara',
+      spot: 'Argentina',
+      service: 5,
+      description: 'The hotel is located in bariloche. for an additional fee on reception you can change your service for an all inclusive one',
+      price: 250,
+      user_id: 2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      image: ["products-1687548608472.jpeg","products-1687548608473.jpeg","products-1687548608475.jpg"],
+      name: 'Sea views resort',
+      spot: 'Dominica',
+      service: 5,
+      description: 'The resort is all inclusive and has a private beach ',
+      price: 230,
+      user_id: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     }]);
