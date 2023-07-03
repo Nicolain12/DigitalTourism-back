@@ -4,7 +4,8 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Hotels', [{
-      image: ["products-1687547747761.jpeg","products-1687547747777.jpeg","products-1687547747778.jpeg"],
+      id: 1,
+      image: ["products-1687547747761.jpeg", "products-1687547747777.jpeg", "products-1687547747778.jpeg"],
       name: 'Sunset resort',
       spot: 'Venezuela',
       service: 4,
@@ -13,8 +14,9 @@ module.exports = {
       user_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
-    },{
-      image: ["products-1687547965103.jpeg","products-1687547965105.jpeg","products-1687547965108.png"],
+    }, {
+      id: 2,
+      image: ["products-1687547965103.jpeg", "products-1687547965105.jpeg", "products-1687547965108.png"],
       name: 'Sakura hotel',
       spot: 'Japan',
       service: 3,
@@ -23,8 +25,9 @@ module.exports = {
       user_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
-    },{
-      image: ["products-1687548436421.jpg","products-1687548436421.jpg","products-1687548436421.jpg"],
+    }, {
+      id: 3,
+      image: ["products-1687548436421.jpg", "products-1687548436421.jpg", "products-1687548436421.jpg"],
       name: 'Yarara',
       spot: 'Argentina',
       service: 5,
@@ -33,8 +36,9 @@ module.exports = {
       user_id: 2,
       createdAt: new Date(),
       updatedAt: new Date()
-    },{
-      image: ["products-1687548608472.jpeg","products-1687548608473.jpeg","products-1687548608475.jpg"],
+    }, {
+      id: 4,
+      image: ["products-1687548608472.jpeg", "products-1687548608473.jpeg", "products-1687548608475.jpg"],
       name: 'Sea views resort',
       spot: 'Dominica',
       service: 5,

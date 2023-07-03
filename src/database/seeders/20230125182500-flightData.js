@@ -4,6 +4,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Flights', [{
+      id: 1,
       image: ["products-1687547596186.jpeg","products-1687547596189.jpg","products-1687547596190.jpg"],
       airline: 'Aerolineas argentinas',
       departure: 'Argentina',
@@ -19,6 +20,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },{
+      id: 2,
       image: ["products-1687547965072.jpeg","products-1687547965073.jpeg","products-1687547965074.jpeg"],
       airline: 'Asian airlines',
       departure: 'Brazil',
@@ -34,6 +36,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },{
+      id: 3,
       image: ["products-1687548289075.jpg","products-1687548289075.jpg","products-1687548289076.jpg"],
       airline: 'Rusian airlines',
       departure: 'Spain',
@@ -49,6 +52,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },{
+      id: 4,
       image: ["products-1687548608439.jpeg","products-1687548608446.jpeg","products-1687548608447.jpg"],
       airline: 'Dominican airlines',
       departure: 'Colombia',

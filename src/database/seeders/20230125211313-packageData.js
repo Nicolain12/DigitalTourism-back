@@ -4,6 +4,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Packages', [{
+      id: 1,
       flight_id:2,
       hotel_id:2,
       price:4296,
@@ -12,6 +13,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },{
+      id: 2,
       flight_id:4,
       hotel_id:4,
       price:3255,
